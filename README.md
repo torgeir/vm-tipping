@@ -14,13 +14,21 @@ http://vm.wa.gd/
 
 (må desverre restartes når den tryner med feil..)
 
-## Deploy?
+## Deploy
 
 Pull-request på github, så merger og deployer @torgeir
 
-## Fler features?
+## Flere features?
 
-- [ ] API for å hente matcher per dag https://github.com/openfootball/api/blob/master/GAMES.md
-- [ ] API for å hente lag https://github.com/openfootball/api/blob/master/TEAMS.md
-- [ ] API for å hente kampdager https://github.com/openfootball/api/blob/master/ROUNDS.md
-- [ ] Liste over kamper per dag view-source:http://apptitude.ch/worldcup/
+- [ ] vise dagens kamper
+- [ ] vise dagens resultater
+- [ ] vise diff fra faktiske resultater
+- [ ] cache apikall i localastorage i ~1 dag
+
+
+## Mulige APIer vi kan bruke?
+
+API for å hente matcher per dag https://github.com/openfootball/api/blob/master/GAMES.md
+API for å hente lag https://github.com/openfootball/api/blob/master/TEAMS.md
+API for å hente kampdager https://github.com/openfootball/api/blob/master/ROUNDS.md
+Liste over kamper per dag view-source:http://apptitude.ch/worldcup/
