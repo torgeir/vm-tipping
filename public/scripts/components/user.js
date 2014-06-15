@@ -6,9 +6,11 @@ module.exports = React.createClass({
   mixins: [RoutingContextMixin],
 
   render: function () {
+    var fixMobileSafariIssue = { cursor: "pointer" }; // https://github.com/facebook/react/issues/1169
+
     return (
       <li>
-        <a style="cursor: pointer" onClick={this.clicked}>
+        <a style={fixMobileSafariIssue} onClick={this.clicked}>
           {this.name()}
         </a>
       </li>
