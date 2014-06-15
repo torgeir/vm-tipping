@@ -8,7 +8,7 @@ module.exports = React.createClass({
   render: function () {
     return (
       <li>
-        <a onClick={this.clicked} onTouchEnd={this.clicked}>
+        <a style="cursor: pointer" onClick={this.clicked}>
           {this.name()}
         </a>
       </li>
