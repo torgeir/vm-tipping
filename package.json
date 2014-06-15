@@ -20,6 +20,7 @@
     "watchify": "^0.10.2"
   },
   "scripts": {
+    "postinstall": "touch public/app-bundle.js",
     "watch": "./node_modules/.bin/harp server public & npm run watch-js",
     "watch-js": "./node_modules/.bin/watchify -t [reactify --es6 --everything] public/scripts/app.js -o public/app-bundle.js",
     "bundle-js": "./node_modules/.bin/browserify -t [reactify --es6 --everything] public/scripts/app.js > public/app-bundle.js"
