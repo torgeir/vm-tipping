@@ -8,4 +8,12 @@
 
 <div id="app"></div>
 
+<script>
+  // remove scrolbar safari
+  window.addEventListener("load",function() {
+    setTimeout(function(){
+      window.scrollTo(0, 1);
+    }, 100);
+  });
+</script>
 <script src="/app-bundle.js"></script>
