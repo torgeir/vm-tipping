@@ -14,4 +14,4 @@ Leaderboard for vm-tippinga.
 
 ## Deploy?
 
-    pull-request på github, så merge og deployer @torgeir
+Pull-request på github, så merger og deployer @torgeir
