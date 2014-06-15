@@ -6,7 +6,7 @@ var Routes = require('./routes');
 
 var appEl = document.querySelector("#app");
 
-FastClick.attach(allEl);
+FastClick.attach(appEl);
 
 React.initializeTouchEvents(true);
 
