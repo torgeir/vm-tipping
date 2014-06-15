@@ -1,0 +1,4 @@
+#!/bin/sh
+scp -r public package.json wa.gd:~/www/vm.wa.gd/
+ssh wa.gd /home/torgeir/www/vm.wa.gd/update
+ssh wa.gd sudo service vm.wa.gd restart

@@ -1,0 +1,75 @@
+@import "_farger";
+@import "_fonts";
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  color: @farge-tekst;
+  font-family: Georgia;
+  font-size: 100%;
+  // text-transform: uppercase;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  left: 0.5em;
+  right: 0.5em;
+  z-index: 1;
+  display: block;
+
+  padding-bottom: 1em;
+}
+
+#meny {
+  padding: 0.35em 0.25em;
+  float: right;
+
+  .fa-icon(@fa-var-bars);
+  text-decoration: none;
+  cursor: pointer;
+  color: @farge-tekst;
+  font-size: 1.5em;
+
+  &:hover {
+  }
+
+  &.meny--apen {
+  }
+}
+
+.meny-liste {
+  margin-top: 1.35em;
+  background-color: @farge-tekst;
+  padding: 1em;
+}
+
+.meny-ikon {
+  margin-right: 0.5em;
+}
+
+// .meny-ikon--pallen {
+//   .fa-icon(@fa-var-trophy);
+// }
+
+
+a,
+a:visited {
+  display: block;
+  padding: 1em;
+  text-decoration: none;
+}
+
+a:hover {
+}
+
+.score {
+  font-family: Georgia;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
