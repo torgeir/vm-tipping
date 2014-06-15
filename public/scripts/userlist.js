@@ -16,9 +16,9 @@ module.exports = React.createClass({
     var Users = users.map(user => <User user={user} />);
 
     return (
-      <div>
+      <ul>
         {Users}
-      </div>
+      </ul>
     );
   }
 });

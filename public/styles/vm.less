@@ -1,4 +1,4 @@
-@import "_farger";
+@import "_colors";
 @import "_fonts";
 
 * { box-sizing: border-box; }
@@ -6,70 +6,43 @@
 html, body {
   margin: 0;
   padding: 0;
-  color: @farge-tekst;
+}
+
+body {
+  padding: 1em;
+  color: @color-text;
   font-family: Georgia;
   font-size: 100%;
-  // text-transform: uppercase;
 }
-
-nav {
-  position: absolute;
-  top: 0;
-  left: 0.5em;
-  right: 0.5em;
-  z-index: 1;
-  display: block;
-
-  padding-bottom: 1em;
-}
-
-#meny {
-  padding: 0.35em 0.25em;
-  float: right;
-
-  .fa-icon(@fa-var-bars);
-  text-decoration: none;
-  cursor: pointer;
-  color: @farge-tekst;
-  font-size: 1.5em;
-
-  &:hover {
-  }
-
-  &.meny--apen {
-  }
-}
-
-.meny-liste {
-  margin-top: 1.35em;
-  background-color: @farge-tekst;
-  padding: 1em;
-}
-
-.meny-ikon {
-  margin-right: 0.5em;
-}
-
-// .meny-ikon--pallen {
-//   .fa-icon(@fa-var-trophy);
-// }
-
 
 a,
 a:visited {
   display: block;
-  padding: 1em;
+  padding: 1em 0;
   text-decoration: none;
+  cursor: pointer;
+  color: @color-link;
 }
 
 a:hover {
+  color: @color-link-hover;
 }
 
-.score {
-  font-family: Georgia;
-  font-size: 1.5em;
-  line-height: 1.5em;
-  font-weight: bold;
-  text-align: center;
+ul {
+  margin: 0;
+  margin-bottom: 1em;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+p {
+  margin: 0;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
 }
 

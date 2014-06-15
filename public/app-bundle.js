@@ -32435,6 +32435,8 @@ var RRouter = require('rrouter');
 
 var Routes = require('./routes');
 
+React.initializeTouchEvents(true);
+
 RRouter.start(Routes, function(view) {
   React.renderComponent(view,
     document.querySelector("#app"));
@@ -32537,8 +32539,10 @@ module.exports = React.createClass({displayName: 'exports',
 
   render: function () {
     return (
-      React.DOM.p( {onClick:this.clicked}, 
-        this.name()
+      React.DOM.li(null, 
+        React.DOM.a( {onClick:this.clicked, onTouchEnd:this.clicked}, 
+          this.name()
+        )
       )
     );
   },
@@ -32575,7 +32579,7 @@ module.exports = React.createClass({displayName: 'exports',
     var Users = users.map(function(user)  {return User( {user:user} );});
 
     return (
-      React.DOM.div(null, 
+      React.DOM.ul(null, 
         Users
       )
     );
@@ -32597,34 +32601,32 @@ module.exports = React.createClass({displayName: 'exports',
       return (React.DOM.div(null, "Loading.."));
     }
 
-    console.log(this.results());
-
     return (
       React.DOM.div(null, 
         Menu(null ),
-        React.DOM.p(null, this.name()),
+        React.DOM.h1(null, this.name()),
         React.DOM.div(null, 
-          React.DOM.p(null, "Gruppespill"),
+          React.DOM.h2(null, "Gruppespill"),
           this.groupmatches()
         ),
         React.DOM.div(null, 
-          React.DOM.p(null, "Åttendedelsfinale"),
+          React.DOM.h2(null, "Åttendedelsfinale"),
           Group( {group:this.results().eight} )
         ),
         React.DOM.div(null, 
-          React.DOM.p(null, "Kvartfinale"),
+          React.DOM.h2(null, "Kvartfinale"),
           Group( {group:this.results().kvart} )
         ),
         React.DOM.div(null, 
-          React.DOM.p(null, "Semifinale"),
+          React.DOM.h2(null, "Semifinale"),
           Group( {group:this.results().semi} )
         ),
         React.DOM.div(null, 
-          React.DOM.p(null, "Bronsefinale"),
+          React.DOM.h2(null, "Bronsefinale"),
           Group( {group:this.results().bronsefinale} )
         ),
         React.DOM.div(null, 
-          React.DOM.p(null, "Finale"),
+          React.DOM.h2(null, "Finale"),
           Group( {group:this.results().finale} )
         )
       )

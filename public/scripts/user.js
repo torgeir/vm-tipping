@@ -7,9 +7,11 @@ module.exports = React.createClass({
 
   render: function () {
     return (
-      <p onClick={this.clicked}>
-        {this.name()}
-      </p>
+      <li>
+        <a onClick={this.clicked} onTouchEnd={this.clicked}>
+          {this.name()}
+        </a>
+      </li>
     );
   },
 

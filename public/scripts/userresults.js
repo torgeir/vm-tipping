@@ -12,34 +12,32 @@ module.exports = React.createClass({
       return (<div>Loading..</div>);
     }
 
-    console.log(this.results());
-
     return (
       <div>
         <Menu />
-        <p>{this.name()}</p>
+        <h1>{this.name()}</h1>
         <div>
-          <p>Gruppespill</p>
+          <h2>Gruppespill</h2>
           {this.groupmatches()}
         </div>
         <div>
-          <p>Åttendedelsfinale</p>
+          <h2>Åttendedelsfinale</h2>
           <Group group={this.results().eight} />
         </div>
         <div>
-          <p>Kvartfinale</p>
+          <h2>Kvartfinale</h2>
           <Group group={this.results().kvart} />
         </div>
         <div>
-          <p>Semifinale</p>
+          <h2>Semifinale</h2>
           <Group group={this.results().semi} />
         </div>
         <div>
-          <p>Bronsefinale</p>
+          <h2>Bronsefinale</h2>
           <Group group={this.results().bronsefinale} />
         </div>
         <div>
-          <p>Finale</p>
+          <h2>Finale</h2>
           <Group group={this.results().finale} />
         </div>
       </div>
