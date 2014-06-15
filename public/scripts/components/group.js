@@ -6,7 +6,6 @@ var Match = require('./match');
 module.exports = React.createClass({
 
   render: function () {
-
     var group = this.group();
 
     var matches = _(group)

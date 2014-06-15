@@ -1,9 +1,9 @@
 var React   = require('react');
 var RRouter = require('rrouter');
 
-var UserList    = require('./userlist');
-var UserResults = require('./userresults');
 var Api         = require('./api');
+var UserList    = require('./components/userlist');
+var UserResults = require('./components/userresults');
 
 var Routes = RRouter.Routes;
 var Route  = RRouter.Route;

@@ -1,12 +1,14 @@
 var _ = require('lodash');
 
-
 var ajax = require('./ajax');
 
 // Fetch raw data immediately
 var rawUserDataPromise = () => ajax.get("http://dev.wa.gd/json");
 
-// Parse data into js objects as soon as possible
+// Fetch users and results data
+// Parses data into js objects as soon as possible
+//
+// data is newline separated lists of json { name: ..., results: [] }
 var usersPromise = rawUserDataPromise().then(res => {
   var text = res.text;
   var jsonLines = text.split("\n");
@@ -34,7 +36,10 @@ var usersPromise = rawUserDataPromise().then(res => {
   return objects;
 });
 
-var getUsers = exports.getUsers = () => {
+/**
+ * Fetch users
+ */
+exports.getUsers = () => {
   return usersPromise.then(users =>
     _(users)
       .chain()
@@ -44,9 +49,12 @@ var getUsers = exports.getUsers = () => {
       .value());
 };
 
+/**
+ * Fetch user by id
+ */
 exports.getUser = query => {
   var userId = Number(query.id);
-  return getUsers().then(users =>
+  return exports.getUsers().then(users =>
     _(users)
       .chain()
       .filter(user => user.id === userId)
@@ -54,6 +62,9 @@ exports.getUser = query => {
       .value());
 };
 
+/**
+ * Fetch results by user id
+ */
 exports.getResults = query => {
   var userId = Number(query.id);
   return usersPromise.then(users =>

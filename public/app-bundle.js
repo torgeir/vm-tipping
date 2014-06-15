@@ -32364,13 +32364,15 @@ exports.get = function(url)  {
 },{"bluebird":3,"superagent":198}],202:[function(require,module,exports){
 /** @jsx React.DOM */var _ = require('lodash');
 
-
 var ajax = require('./ajax');
 
 // Fetch raw data immediately
 var rawUserDataPromise = function()  {return ajax.get("http://dev.wa.gd/json");};
 
-// Parse data into js objects as soon as possible
+// Fetch users and results data
+// Parses data into js objects as soon as possible
+//
+// data is newline separated lists of json { name: ..., results: [] }
 var usersPromise = rawUserDataPromise().then(function(res)  {
   var text = res.text;
   var jsonLines = text.split("\n");
@@ -32398,7 +32400,10 @@ var usersPromise = rawUserDataPromise().then(function(res)  {
   return objects;
 });
 
-var getUsers = exports.getUsers = function()  {
+/**
+ * Fetch users
+ */
+exports.getUsers = function()  {
   return usersPromise.then(function(users) 
     {return _(users)
       .chain()
@@ -32408,9 +32413,12 @@ var getUsers = exports.getUsers = function()  {
       .value();});
 };
 
+/**
+ * Fetch user by id
+ */
 exports.getUser = function(query)  {
   var userId = Number(query.id);
-  return getUsers().then(function(users) 
+  return exports.getUsers().then(function(users) 
     {return _(users)
       .chain()
       .filter(function(user)  {return user.id === userId;})
@@ -32418,6 +32426,9 @@ exports.getUser = function(query)  {
       .value();});
 };
 
+/**
+ * Fetch results by user id
+ */
 exports.getResults = function(query)  {
   var userId = Number(query.id);
   return usersPromise.then(function(users) 
@@ -32442,7 +32453,7 @@ RRouter.start(Routes, function(view) {
     document.querySelector("#app"));
 });
 
-},{"./routes":207,"react":172,"rrouter":183}],204:[function(require,module,exports){
+},{"./routes":210,"react":172,"rrouter":183}],204:[function(require,module,exports){
 /** @jsx React.DOM */var React = require('react');
 var _     = require('lodash');
 
@@ -32451,7 +32462,6 @@ var Match = require('./match');
 module.exports = React.createClass({displayName: 'exports',
 
   render: function () {
-
     var group = this.group();
 
     var matches = _(group)
@@ -32508,28 +32518,6 @@ module.exports = React.createClass({displayName: 'exports',
 });
 
 },{"react":172,"rrouter":183}],207:[function(require,module,exports){
-/** @jsx React.DOM */var React   = require('react');
-var RRouter = require('rrouter');
-
-var UserList    = require('./userlist');
-var UserResults = require('./userresults');
-var Api         = require('./api');
-
-var Routes = RRouter.Routes;
-var Route  = RRouter.Route;
-
-var getUser    = Api.getUser.bind(Api);
-var getUsers   = Api.getUsers.bind(Api);
-var getResults = Api.getResults.bind(Api);
-
-module.exports = (
-  Routes(null, 
-    Route( {name:"index", path:"/", view:UserList, usersPromise:getUsers} ),
-    Route( {name:"user", path:"/user/:id", view:UserResults, userPromise:getUser, resultsPromise:getResults} )
-  )
-);
-
-},{"./api":202,"./userlist":209,"./userresults":210,"react":172,"rrouter":183}],208:[function(require,module,exports){
 /** @jsx React.DOM */var React               = require('react');
 var RoutingContextMixin = require('rrouter').RoutingContextMixin;
 
@@ -32560,7 +32548,7 @@ module.exports = React.createClass({displayName: 'exports',
   }
 });
 
-},{"react":172,"rrouter":183}],209:[function(require,module,exports){
+},{"react":172,"rrouter":183}],208:[function(require,module,exports){
 /** @jsx React.DOM */var React = require('react');
 
 var User = require('./user');
@@ -32586,7 +32574,7 @@ module.exports = React.createClass({displayName: 'exports',
   }
 });
 
-},{"./user":208,"react":172}],210:[function(require,module,exports){
+},{"./user":207,"react":172}],209:[function(require,module,exports){
 /** @jsx React.DOM */var React = require('react');
 var _     = require('lodash');
 
@@ -32661,4 +32649,26 @@ module.exports = React.createClass({displayName: 'exports',
 
 });
 
-},{"./group":204,"./menu":206,"lodash":37,"react":172}]},{},[203])
+},{"./group":204,"./menu":206,"lodash":37,"react":172}],210:[function(require,module,exports){
+/** @jsx React.DOM */var React   = require('react');
+var RRouter = require('rrouter');
+
+var Api         = require('./api');
+var UserList    = require('./components/userlist');
+var UserResults = require('./components/userresults');
+
+var Routes = RRouter.Routes;
+var Route  = RRouter.Route;
+
+var getUser    = Api.getUser.bind(Api);
+var getUsers   = Api.getUsers.bind(Api);
+var getResults = Api.getResults.bind(Api);
+
+module.exports = (
+  Routes(null, 
+    Route( {name:"index", path:"/", view:UserList, usersPromise:getUsers} ),
+    Route( {name:"user", path:"/user/:id", view:UserResults, userPromise:getUser, resultsPromise:getResults} )
+  )
+);
+
+},{"./api":202,"./components/userlist":208,"./components/userresults":209,"react":172,"rrouter":183}]},{},[203])
