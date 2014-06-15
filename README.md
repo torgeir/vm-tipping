@@ -23,3 +23,4 @@ Pull-request på github, så merger og deployer @torgeir
 - [ ] API for å hente matcher per dag https://github.com/openfootball/api/blob/master/GAMES.md
 - [ ] API for å hente lag https://github.com/openfootball/api/blob/master/TEAMS.md
 - [ ] API for å hente kampdager https://github.com/openfootball/api/blob/master/ROUNDS.md
+- [ ] Liste over kamper per dag view-source:http://apptitude.ch/worldcup/
