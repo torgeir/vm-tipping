@@ -2,6 +2,8 @@
 
 Leaderboard for vm-tippinga.
 
+http://vm.wa.gd/
+
 ## Installer
 
     npm install
