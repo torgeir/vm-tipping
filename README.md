@@ -17,3 +17,9 @@ http://vm.wa.gd/
 ## Deploy?
 
 Pull-request på github, så merger og deployer @torgeir
+
+## Fler features?
+
+- [ ] API for å hente matcher per dag https://github.com/openfootball/api/blob/master/GAMES.md
+- [ ] API for å hente lag https://github.com/openfootball/api/blob/master/TEAMS.md
+- [ ] API for å hente kampdager https://github.com/openfootball/api/blob/master/ROUNDS.md
