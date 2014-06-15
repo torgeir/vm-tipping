@@ -33241,7 +33241,7 @@ var Routes = require('./routes');
 
 var appEl = document.querySelector("#app");
 
-FastClick.attach(appEl);
+FastClick(appEl);
 
 React.initializeTouchEvents(true);
 
