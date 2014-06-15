@@ -16,4 +16,11 @@
     }, 100);
   });
 </script>
+<script>
+  // useful html5 elements for ie
+  (function() {
+  var i, len, els = ['header', 'section', 'article', 'aside', 'footer'];
+  for (i = 0, len = els.length; i < len; i++) document.createElement(els[i]);
+  })();
+</script>
 <script src="/app-bundle.js"></script>
