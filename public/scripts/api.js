@@ -79,7 +79,17 @@ exports.getResults = query => {
       .value());
 };
 
-exports.getMatches = query => {
+/**
+ * Fetch matches for today, with the bets of every player.
+ */
+exports.getTodaysMatches = query => {
+  return exports.getMatches({ day: 5 });
+}
+
+/**
+ * Fetch matches for a given day, with the bets of every player.
+ */
+exports.getMatches = query => {  
   var startDate = new Date('Jun 12, 2014 GMT-03:00');
   var matches = {'items': [
     {'day':'Thu','date': startDate,'time':'17:00','from':'Brasil','to':'Kroatia','place':'Sao Paulo', homegoals: 3, awaygoals: 1, outcome: 'h'},
