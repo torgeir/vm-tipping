@@ -133,18 +133,55 @@ exports.getMatches = query => {
   var day = Number(query.day) - 1;    
   var date = new Date(startDate.getTime() + (24 * 3600 * 1000 * day));
 
-  return Promise.resolve(
-          _(matches.items)
+  var createBets = function(user, match) {
+     return {
+      id: user.id,
+      name: user.name,
+      homename: match.homename,
+      awayname: match.awayname,
+      homegoals: match.homegoals,
+      awaygoals: match.awaygoals                            
+    }
+  }
+
+  return usersPromise.then(users => {
+
+    var results = 
+      _(users) 
+        .chain()
+        .map(user => {
+
+          var groupPlay = user.results.group;                      
+          return _(groupPlay)
             .chain()
-            .filter(m => m.date.getTime() === date.getTime())
-            .map(m => {
-              return {
-                homename: m.from,
-                awayname: m.to,
-                homegoals: m.homegoals,
-                awaygoals: m.awaygoals
-              }
-            })
+            .keys()
+            .map(groupId => {
+              
+              var group = groupPlay[groupId]; 
+              return _(group)
+                .chain()
+                .keys()
+                .map(matchId => group[matchId])
+                .map(match => createBets(user, match)) 
+                .value() 
+            })                        
             .value()
-          );
+        })
+        .flatten()
+        .value();
+
+    return _(matches.items)
+      .chain()
+      .filter(m => m.date.getTime() === date.getTime())
+      .map(m => {
+        return {
+          homename: m.from,
+          awayname: m.to,
+          homegoals: m.homegoals,
+          awaygoals: m.awaygoals,
+          bets: _(results).chain().filter(r => r.homename == m.from && r.awayname == m.to).value()
+        }
+      })
+      .value()
+  });
 }
