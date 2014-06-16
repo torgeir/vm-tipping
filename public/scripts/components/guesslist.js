@@ -7,14 +7,14 @@ module.exports = React.createClass({
 
   render: function () {
     var match = this.match();
-    var score = match.homename + " - " + match.awayname + ": " + match.homegoals + " - " + match.awaygoals;
+    var score = match.homename + ' - ' + match.awayname + ': ' + match.homegoals + ' - '  + match.awaygoals;
     var bets = _(match.bets)
     						.chain()
     						.map(b => <Guess bet={b} />)
     						.value();
 
     return (
-			<section>		
+			<section className='match-guesses'>		
 				<h1>{score}</h1>
 				<ul>
 					{bets}
