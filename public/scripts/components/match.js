@@ -8,7 +8,7 @@ module.exports = React.createClass({
     
     return (
       <li className='bet'>
-        <span>{match.homename + ' - ' + match.awayname}</span>
+        <span>{match.homename + ' - ' + match.awayname}</span> 
         <span>{match.homegoals + ' - ' + match.awaygoals}</span>
       </li>
     );
