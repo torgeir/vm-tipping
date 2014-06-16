@@ -3,6 +3,7 @@ var React = require('react');
 var Link  = require('rrouter').Link;
 
 var Match = require('./match');
+var Menu  = require('./menu');
 
 module.exports = React.createClass({
 
@@ -24,6 +25,7 @@ module.exports = React.createClass({
 
     return (
       <section>
+        <Menu />
         <Link to="matchday" day={prev}>Prev</Link>
         <h1>{day}</h1>
         <Link to="matchday" day={next}>Next</Link>
