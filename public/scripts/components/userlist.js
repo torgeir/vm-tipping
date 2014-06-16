@@ -1,4 +1,5 @@
 var React = require('react');
+var Link  = require('rrouter').Link;
 
 var User = require('./user');
 
@@ -16,9 +17,12 @@ module.exports = React.createClass({
     var Users = users.map(user => <User user={user} />);
 
     return (
-      <ul>
-        {Users}
-      </ul>
+      <section>
+        <Link to="matchday" day="5">Se dagens kamper</Link>
+        <ul>
+          {Users}
+        </ul>
+      </section>
     );
   }
 });

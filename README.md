@@ -20,15 +20,20 @@ Pull-request på github, så merger og deployer @torgeir
 
 ## Flere features?
 
-- [ ] vise dagens kamper
+- [x] vise dagens kamper
 - [ ] vise dagens resultater
 - [ ] vise diff fra faktiske resultater
 - [ ] cache apikall i localastorage i ~1 dag
 
+Se Github Issues for konkrete oppgaver.
+
 
 ## Mulige APIer vi kan bruke?
+Foreløpig har vi lagt opp til å hardkode kampoppsettet, og heller oppdatere daglig når sluttspill kampene blir klare. Alle gruppespill kampene er lagt inn i API.js fila.
 
-API for å hente matcher per dag https://github.com/openfootball/api/blob/master/GAMES.md
-API for å hente lag https://github.com/openfootball/api/blob/master/TEAMS.md
-API for å hente kampdager https://github.com/openfootball/api/blob/master/ROUNDS.md
-Liste over kamper per dag view-source:http://apptitude.ch/worldcup/
+Flagg kan hentes fra FIFA [http://img.fifa.com/images/flags/4/Bra.png](http://img.fifa.com/images/flags/4/Bra.png).
+
+* API for å hente matcher per dag https://github.com/openfootball/api/blob/master/GAMES.md
+* API for å hente lag https://github.com/openfootball/api/blob/master/TEAMS.md
+* API for å hente kampdager https://github.com/openfootball/api/blob/master/ROUNDS.md
+* Liste over kamper per dag view-source:http://apptitude.ch/worldcup/
