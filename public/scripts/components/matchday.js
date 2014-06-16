@@ -30,9 +30,9 @@ module.exports = React.createClass({
     return (
       <section>
         <Menu />
-        <Link to="matchday" day={prev}>I går</Link>
+        <Link to="matchday" day={prev}>Forrige</Link>
         <h1>Kampdag {day}</h1>
-        <Link to="matchday" day={next}>I morgen</Link>
+        <Link to="matchday" day={next}>Neste</Link>
         {matches}
       </section>
     );
