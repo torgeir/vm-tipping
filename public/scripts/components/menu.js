@@ -5,7 +5,7 @@ module.exports = React.createClass({
 
   render: function () {
     return (
-      <Link to="index">Back</Link>
+      <Link to="index">Tilbake</Link>
     );
   }
 });
