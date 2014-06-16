@@ -104,7 +104,7 @@ exports.getMatches = query => {
     {'day':'Sun','date': new Date('Jun 15, 2014 GMT-03:00'),'time':'16:00','from':'Frankrike','to':'Honduras','place':'Porto Alegre', homegoals: 3, awaygoals: 0, outcome: 'h'},
     {'day':'Sun','date': new Date('Jun 15, 2014 GMT-03:00'),'time':'19:00','from':'Argentina','to':'Bosnia-Hercegovina','place':'Rio De Janeiro', homegoals: 2, awaygoals: 1, outcome: 'h'},
     {'day':'Mon','date': new Date('Jun 16, 2014 GMT-03:00'),'time':'13:00','from':'Tyskland','to':'Portugal','place':'Salvador', homegoals: 4, awaygoals: 0, outcome: 'h'},
-    {'day':'Mon','date': new Date('Jun 16, 2014 GMT-03:00'),'time':'16:00','from':'Iran','to':'Nigeria','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
+    {'day':'Mon','date': new Date('Jun 16, 2014 GMT-03:00'),'time':'16:00','from':'Iran','to':'Nigeria','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: 'u'},
     {'day':'Mon','date': new Date('Jun 16, 2014 GMT-03:00'),'time':'19:00','from':'Ghana','to':'USA','place':'Natal', homegoals: 0, awaygoals: 0, outcome: ''},
     {'day':'Tue','date': new Date('Jun 17, 2014 GMT-03:00'),'time':'13:00','from':'Belgia','to':'Algerie','place':'Belo Horizonte', homegoals: 0, awaygoals: 0, outcome: ''},
     {'day':'Tue','date': new Date('Jun 17, 2014 GMT-03:00'),'time':'16:00','from':'Brasil','to':'Mexico','place':'Fortaleza', homegoals: 0, awaygoals: 0, outcome: ''},
