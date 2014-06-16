@@ -1,86 +1,11 @@
+// variables
 @import "_colors";
 @import "_fonts";
 
+// globals
 * { box-sizing: border-box; }
+@import "_global";
 
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  max-width: 400px;
-  padding: 1em;
-  color: @color-text;
-  font-family: Georgia;
-  font-size: 100%;
-}
-
-a,
-a:visited {
-  display: block;
-  padding: 1em 0;
-  text-decoration: none;
-  cursor: pointer;
-  color: @color-link;
-}
-
-a:hover {
-  color: @color-link-hover;
-}
-
-ul {
-  margin: 0;
-  margin-bottom: 1em;
-  padding: 0;
-}
-
-li {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-p {
-  margin: 0;
-  margin-top: 0.5em;
-  margin-bottom: 1em;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 24px;
-}
-
-h1 {
-  margin: 0;
-}
-
-.match-guesses {
-  margin-bottom: 42px;
-}
-
-.bet {
-  display: flex;
-  justify-content: space-between;
-  margin: 4px 0;
-}
-
-.no-outcome {
-  color: @color-no-outcome;
-}
-
-.correct-outcome {
-  color: @color-correct-outcome;
-}
-
-.wrong-outcome {
-  color: @color-wrong-outcome;
-}
-
-.correct-result {
-  color: @color-correct-result;
-}
-
+// components
+@import "components/_guess";
+@import "components/_guesslist";

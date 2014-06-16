@@ -14,7 +14,7 @@ module.exports = React.createClass({
     						.value();
 
     return (
-			<section className='match-guesses'>		
+			<section className='match-guesses'>
 				<h1>{score}</h1>
 				<ul>
 					{bets}
