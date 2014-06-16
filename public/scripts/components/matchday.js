@@ -2,8 +2,8 @@ var _ = require('lodash');
 var React = require('react');
 var Link  = require('rrouter').Link;
 
-var Match = require('./match');
 var Menu  = require('./menu');
+var GuessList = require('./guesslist');
 
 module.exports = React.createClass({
 
@@ -21,7 +21,11 @@ module.exports = React.createClass({
       prev = day;
     }
 
-    var matches = _(this.props.matches).chain().map(m => <Match match={m}/>).value();
+    if (!this.props.matches) {
+      return (<div>Loading..</div>);
+    }
+
+    var matches = _(this.props.matches).chain().map(m => <GuessList match={m}/>).value();
 
     return (
       <section>
