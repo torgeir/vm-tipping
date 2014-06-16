@@ -5,8 +5,13 @@ module.exports = React.createClass({
 
   render: function () {
     var match = this.match();
-    var score = match.homename + " - " + match.awayname + ": " + match.homegoals + " - " + match.awaygoals;
-    return (<li>{score}</li>);
+    
+    return (
+      <li className='bet'>
+        <span>{match.homename + ' - ' + match.awayname}</span>
+        <span>{match.homegoals + ' - ' + match.awaygoals}</span>
+      </li>
+    );
   },
 
   match: function () {
