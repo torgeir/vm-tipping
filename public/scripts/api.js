@@ -193,6 +193,7 @@ exports.getMatches = query => {
                   .chain()
                   .filter(r => r.homename == m.from && r.awayname == m.to)
                   .map(b => {
+                    b.matchPlayed = (m.outcome !== '');
                     b.correctOutcome = (b.outcome === m.outcome);
                     b.correctResult = (b.homegoals === m.homegoals && b.awaygoals == m.awaygoals);
                     return b;
