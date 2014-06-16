@@ -23,6 +23,8 @@ var usersPromise = rawUserDataPromise().then(res => {
       .filter(line => line.length !== 0)
       // parse to objects
       .map(JSON.parse)
+      // skip duplicates
+      .unique("name")
       // remove undefined users
       .filter(userData => userData.name !== "undefined")
       // sort
