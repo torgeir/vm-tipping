@@ -53,7 +53,7 @@ module.exports = React.createClass({
   },
 
   results: function () {
-    return this.props.results;
+    return this.user().results;
   },
 
   groupmatches: function () {

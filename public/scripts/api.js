@@ -48,8 +48,29 @@ exports.getUsers = () => {
     _(users)
       .chain()
       .map(user => {
-        return { name: user.name, id: user.id };
+        user.points = 0;
+        var results = user.results;
+        _(results.group)
+          .chain()
+          .keys()
+          .each(groupId => {
+
+            var group = results.group[groupId];
+           
+            _(group)
+              .chain()
+              .keys()
+              .each(matchId => {
+                var match = group[matchId];
+                var resultMatch = _(matches.items).find(m => m.id == matchId);
+                updateMatchWithResults(match, resultMatch);
+                user.points += match.points;
+              });           
+          })
+          .value();
+        return user;
       })
+      .sortBy(user => user.points * -1)
       .value());
 };
 
@@ -66,51 +87,28 @@ exports.getUser = query => {
       .value());
 };
 
-/**
- * Fetch results by user id
- */
-exports.getResults = query => {
-  var userId = Number(query.id);
-  return usersPromise.then(users =>
-    _(users)
-      .chain()
-      .filter(user => user.id === userId)
-      .map(user => {
-        var results = user.results;
-        _(results.group)
-          .chain()
-          .keys()
-          .each(groupId => {
+var updateMatchWithResults = (match, resultMatch) => {
+  var guessedOutcome = 'u';
+  if (match.homegoals > match.awaygoals) {
+    guessedOutcome = 'h';
+  } else if(match.awaygoals > match.homegoals) {
+    guessedOutcome = 'b';
+  }                
 
-            var group = results.group[groupId];
-           
-            _(group)
-              .chain()
-              .keys()
-              .each(matchId => {
-                var match = group[matchId];
-                var resultMatch = _(matches.items).find(m => m.id == matchId);
-                var guessedOutcome = 'u';
-                if (match.homegoals > match.awaygoals) {
-                  guessedOutcome = 'h';
-                } else if(match.awaygoals > match.homegoals) {
-                  guessedOutcome = 'b';
-                }                
-                match.outcome = resultMatch.outcome;
-                match.matchPlayed = resultMatch.outcome !== '';
-                match.correctResult = resultMatch.homegoals === match.homegoals && resultMatch.awaygoals === match.awaygoals;
-                match.correctOutcome = resultMatch.outcome === guessedOutcome;
-                match.actualHomegoals = resultMatch.homegoals;
-                match.actualAwaygoals = resultMatch.awaygoals;
-              });           
-          })
-          .value();
+  match.outcome = resultMatch.outcome;
+  match.matchPlayed = resultMatch.outcome !== '';
+  match.correctResult = match.matchPlayed && resultMatch.homegoals === match.homegoals && resultMatch.awaygoals === match.awaygoals;
+  match.correctOutcome =  match.matchPlayed && resultMatch.outcome === guessedOutcome;
+  match.actualHomegoals = resultMatch.homegoals;
+  match.actualAwaygoals = resultMatch.awaygoals;  
 
-        return results;
-      })
-      .first()
-      .value());
-};
+  match.points = 0;  
+  if (match.correctResult) {
+    match.points = 20;
+  } else if (match.correctOutcome) {
+    match.points = 10;
+  }
+}
 
 /**
  * Fetch matches for today, with the bets of every player.
