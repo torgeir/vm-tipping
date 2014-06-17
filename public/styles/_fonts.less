@@ -1,8 +1,9 @@
 @path-font: '/styles/fonts';
-@font-soccer: 'samba';
+@font-soccer: 'Samba';
 @font-face {
     font-family: @font-soccer;
     font-style: normal;
     font-weight: 400;
-    src: url("@{path-font}/@{font-soccer}.ttf") format('truetype');
+    src: url("@{path-font}/@{font-soccer}.ttf") format('truetype'),
+         url("@{path-font}/@{font-soccer}.svg#font") format('svg');
 }
