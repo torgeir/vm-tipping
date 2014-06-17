@@ -13,7 +13,7 @@ var matches = {'items': [
     {'day':'Mon','date': new Date('Jun 16, 2014 GMT-03:00'),'time':'13:00',id: 715655,'from':'Tyskland','to':'Portugal','place':'Salvador', homegoals: 4, awaygoals: 0, outcome: 'h'},
     {'day':'Mon','date': new Date('Jun 16, 2014 GMT-03:00'),'time':'16:00',id: 715650,'from':'Iran','to':'Nigeria','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: 'u'},
     {'day':'Mon','date': new Date('Jun 16, 2014 GMT-03:00'),'time':'19:00',id: 715656,'from':'Ghana','to':'USA','place':'Natal', homegoals: 1, awaygoals: 2, outcome: 'b'},
-    {'day':'Tue','date': new Date('Jun 17, 2014 GMT-03:00'),'time':'13:00',id: 715661,'from':'Belgia','to':'Algerie','place':'Belo Horizonte', homegoals: 0, awaygoals: 0, outcome: ''},
+    {'day':'Tue','date': new Date('Jun 17, 2014 GMT-03:00'),'time':'13:00',id: 715661,'from':'Belgia','to':'Algerie','place':'Belo Horizonte', homegoals: 2, awaygoals: 1, outcome: 'h'},
     {'day':'Tue','date': new Date('Jun 17, 2014 GMT-03:00'),'time':'16:00',id: 715621,'from':'Brasil','to':'Mexico','place':'Fortaleza', homegoals: 0, awaygoals: 0, outcome: ''},
     {'day':'Tue','date': new Date('Jun 17, 2014 GMT-03:00'),'time':'19:00',id: 715662,'from':'Russland','to':'Sør-Korea','place':'Cuiaba', homegoals: 0, awaygoals: 0, outcome: ''},
     {'day':'Wed','date': new Date('Jun 18, 2014 GMT-03:00'),'time':'13:00',id: 715627,'from':'Australia','to':'Nederland','place':'Porto Alegre', homegoals: 0, awaygoals: 0, outcome: ''},
