@@ -18,7 +18,7 @@ module.exports = React.createClass({
       }
     }
 
-    var matchResult = '(' + (match.actualHomegoals || 0) + ' - ' + (match.actuallAwaygoals || 0) + ')';
+    var matchResult = '(' + (match.actualHomegoals || 0) + ' - ' + (match.actualAwaygoals || 0) + ')';
 
     return (
       <tr className={matchClass}>

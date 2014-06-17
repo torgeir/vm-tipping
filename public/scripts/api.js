@@ -93,14 +93,14 @@ var updateMatchWithResults = (match, resultMatch) => {
     guessedOutcome = 'h';
   } else if(match.awaygoals > match.homegoals) {
     guessedOutcome = 'b';
-  }                
+  }   
 
   match.outcome = resultMatch.outcome;
   match.matchPlayed = resultMatch.outcome !== '';
   match.correctResult = match.matchPlayed && resultMatch.homegoals === match.homegoals && resultMatch.awaygoals === match.awaygoals;
   match.correctOutcome =  match.matchPlayed && resultMatch.outcome === guessedOutcome;
   match.actualHomegoals = resultMatch.homegoals;
-  match.actualAwaygoals = resultMatch.awaygoals;  
+  match.actualAwaygoals = resultMatch.awaygoals; 
 
   match.points = 0;  
   if (match.correctResult) {
