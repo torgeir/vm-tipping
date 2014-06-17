@@ -25,7 +25,7 @@ module.exports = React.createClass({
         <ul>
           {Matches}
         </ul>
-        <Link to="matchday" day="5">Se hva som er tippet i dag?</Link>
+        <Link to="matchday" day="6">Se hva som er tippet i dag?</Link>
         <h2>Deltagere</h2>
         <ul>
           {Users}
