@@ -48,34 +48,7 @@ exports.getUsers = () => {
     _(users)
       .chain()
       .map(user => {
-        return { name: user.name, id: user.id };
-      })
-      .value());
-};
-
-/**
- * Fetch user by id
- */
-exports.getUser = query => {
-  var userId = Number(query.id);
-  return exports.getUsers().then(users =>
-    _(users)
-      .chain()
-      .filter(user => user.id === userId)
-      .first()
-      .value());
-};
-
-/**
- * Fetch results by user id
- */
-exports.getResults = query => {
-  var userId = Number(query.id);
-  return usersPromise.then(users =>
-    _(users)
-      .chain()
-      .filter(user => user.id === userId)
-      .map(user => {
+        
         var results = user.results;
         _(results.group)
           .chain()
@@ -94,9 +67,20 @@ exports.getResults = query => {
               });           
           })
           .value();
-
-        return results;
+        return user;
       })
+      .value());
+};
+
+/**
+ * Fetch user by id
+ */
+exports.getUser = query => {
+  var userId = Number(query.id);
+  return exports.getUsers().then(users =>
+    _(users)
+      .chain()
+      .filter(user => user.id === userId)
       .first()
       .value());
 };
