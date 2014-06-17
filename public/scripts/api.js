@@ -90,7 +90,6 @@ exports.getResults = query => {
               .each(matchId => {
                 var match = group[matchId];
                 var resultMatch = _(matches.items).find(m => m.id == matchId);
-                
                 var guessedOutcome = 'u';
                 if (match.homegoals > match.awaygoals) {
                   guessedOutcome = 'h';
