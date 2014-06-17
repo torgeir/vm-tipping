@@ -90,18 +90,7 @@ exports.getResults = query => {
               .each(matchId => {
                 var match = group[matchId];
                 var resultMatch = _(matches.items).find(m => m.id == matchId);
-                var guessedOutcome = 'u';
-                if (match.homegoals > match.awaygoals) {
-                  guessedOutcome = 'h';
-                } else if(match.awaygoals > match.homegoals) {
-                  guessedOutcome = 'b';
-                }                
-                match.outcome = resultMatch.outcome;
-                match.matchPlayed = resultMatch.outcome !== '';
-                match.correctResult = resultMatch.homegoals === match.homegoals && resultMatch.awaygoals === match.awaygoals;
-                match.correctOutcome = resultMatch.outcome === guessedOutcome;
-                match.actualHomegoals = resultMatch.homegoals;
-                match.actualAwaygoals = resultMatch.awaygoals;
+                updateMatchWithResults(match, resultMatch);
               });           
           })
           .value();
@@ -111,6 +100,21 @@ exports.getResults = query => {
       .first()
       .value());
 };
+
+var updateMatchWithResults = (match, resultMatch) => {
+  var guessedOutcome = 'u';
+  if (match.homegoals > match.awaygoals) {
+    guessedOutcome = 'h';
+  } else if(match.awaygoals > match.homegoals) {
+    guessedOutcome = 'b';
+  }                
+  match.outcome = resultMatch.outcome;
+  match.matchPlayed = resultMatch.outcome !== '';
+  match.correctResult = resultMatch.homegoals === match.homegoals && resultMatch.awaygoals === match.awaygoals;
+  match.correctOutcome = resultMatch.outcome === guessedOutcome;
+  match.actualHomegoals = resultMatch.homegoals;
+  match.actualAwaygoals = resultMatch.awaygoals;
+}
 
 /**
  * Fetch matches for today, with the bets of every player.
