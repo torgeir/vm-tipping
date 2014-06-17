@@ -92,12 +92,20 @@ var updateMatchWithResults = (match, resultMatch) => {
   } else if(match.awaygoals > match.homegoals) {
     guessedOutcome = 'b';
   }                
+
   match.outcome = resultMatch.outcome;
   match.matchPlayed = resultMatch.outcome !== '';
   match.correctResult = resultMatch.homegoals === match.homegoals && resultMatch.awaygoals === match.awaygoals;
   match.correctOutcome = resultMatch.outcome === guessedOutcome;
   match.actualHomegoals = resultMatch.homegoals;
-  match.actualAwaygoals = resultMatch.awaygoals;
+  match.actualAwaygoals = resultMatch.awaygoals;  
+
+  match.points = 0;  
+  if (match.correctResult) {
+    match.points = 20;
+  } else if (match.correctOutcome) {
+    match.points = 10;
+  }
 }
 
 /**

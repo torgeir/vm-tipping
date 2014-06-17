@@ -21,10 +21,12 @@ module.exports = React.createClass({
     var matchResult = '(' + (match.actualHomegoals || 0) + ' - ' + (match.actuallAwaygoals || 0) + ')';
 
     return (
-      <li className={matchClass + ' bet'}>
-        <span>{match.homename + ' - ' + match.awayname} {matchResult}</span>
-        <span>{match.homegoals + ' - ' + match.awaygoals}</span>
-      </li>
+      <tr className={matchClass}>
+        <td>{match.homename + ' - ' + match.awayname}</td>
+        <td>{matchResult}</td>
+        <td>{match.points}</td>
+        <td>{match.homegoals + ' - ' + match.awaygoals}</td>
+      </tr>
     );    
   },
 

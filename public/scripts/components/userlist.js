@@ -17,14 +17,21 @@ module.exports = React.createClass({
     }
 
     var Users = users.map(user => <User user={user} />);
-    var Matches = matches.map(match => <Match match={match}/>);
+    var Matches = matches.map(match => {
+      return (
+        <tr>
+          <td>{match.homename + ' - ' + match.awayname}</td>
+          <td>{match.homegoals + ' - ' + match.awaygoals}</td>
+        </tr>        
+      )
+    });
 
     return (
       <section>
         <h2>Dagens kamper</h2>
-        <ul>
+        <table>
           {Matches}
-        </ul>
+        </table>
         <Link to="matchday" day="6">Se hva som er tippet i dag?</Link>
         <h2>Deltagere</h2>
         <ul>

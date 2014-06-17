@@ -21,9 +21,9 @@ module.exports = React.createClass({
       .value();
 
     return (
-      <ul>
+      <table>
         {matches}
-      </ul>
+      </table>
     );
   },
 
