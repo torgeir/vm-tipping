@@ -4,20 +4,20 @@ var _     = require('lodash');
 module.exports = React.createClass({
   render: function () {
     var bet = this.props.bet;
-    var betClass = 'no-outcome';
+    var betClass = 'guess-no-outcome';
 
     if (bet.matchPlayed) {
       if (bet.correctResult) {
-        betClass = 'correct-result';
+        betClass = 'guess-correct-result';
       } else if (bet.correctOutcome) {
-        betClass = 'correct-outcome';
+        betClass = 'guess-correct-outcome';
       } else {
-        betClass = 'wrong-outcome';
+        betClass = 'guess-wrong-outcome';
       }
     }
 
     return (
-      <li className={betClass + ' bet'}>
+      <li className={betClass + ' guess'}>
         <span>{bet.name}</span>
         <span>{bet.homegoals + " - " + bet.awaygoals}</span>
       </li>
