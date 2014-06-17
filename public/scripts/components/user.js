@@ -11,21 +11,13 @@ module.exports = React.createClass({
     return (
       <li>
         <a style={fixMobileSafariIssue} onClick={this.clicked}>
-          {this.name()}
+          {this.props.user.points} {this.props.user.name}
         </a>
       </li>
     );
   },
 
   clicked: function () {
-    this.navigate("/user/" + this.id());
-  },
-
-  name: function () {
-    return this.props.user.name;
-  },
-
-  id: function () {
-    return this.props.user.id;
+    this.navigate("/user/" + this.props.user.id);
   }
 });

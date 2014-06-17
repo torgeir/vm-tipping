@@ -48,7 +48,7 @@ exports.getUsers = () => {
     _(users)
       .chain()
       .map(user => {
-        
+        user.points = 0;
         var results = user.results;
         _(results.group)
           .chain()
@@ -64,11 +64,13 @@ exports.getUsers = () => {
                 var match = group[matchId];
                 var resultMatch = _(matches.items).find(m => m.id == matchId);
                 updateMatchWithResults(match, resultMatch);
+                user.points += match.points;
               });           
           })
           .value();
         return user;
       })
+      .sortBy(user => user.points * -1)
       .value());
 };
 
@@ -95,8 +97,8 @@ var updateMatchWithResults = (match, resultMatch) => {
 
   match.outcome = resultMatch.outcome;
   match.matchPlayed = resultMatch.outcome !== '';
-  match.correctResult = resultMatch.homegoals === match.homegoals && resultMatch.awaygoals === match.awaygoals;
-  match.correctOutcome = resultMatch.outcome === guessedOutcome;
+  match.correctResult = match.matchPlayed && resultMatch.homegoals === match.homegoals && resultMatch.awaygoals === match.awaygoals;
+  match.correctOutcome =  match.matchPlayed && resultMatch.outcome === guessedOutcome;
   match.actualHomegoals = resultMatch.homegoals;
   match.actualAwaygoals = resultMatch.awaygoals;  
 
