@@ -2,6 +2,7 @@ var React = require('react');
 var _     = require('lodash');
 
 var Match = require('./match');
+var Guess = require('./guess');
 
 module.exports = React.createClass({
 
