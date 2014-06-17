@@ -6,15 +6,15 @@ module.exports = React.createClass({
   render: function () {
     var match = this.match();
 
-    var matchClass = 'no-outcome';
+    var matchClass = 'guess-no-outcome';
 
     if (match.matchPlayed) {
       if (match.correctResult) {
-        matchClass = 'correct-result';
+        matchClass = 'guess-correct-result';
       } else if (match.correctOutcome) {
-        matchClass = 'correct-outcome';
+        matchClass = 'guess-correct-outcome';
       } else {
-        matchClass = 'wrong-outcome';
+        matchClass = 'guess-wrong-outcome';
       }
     }
 

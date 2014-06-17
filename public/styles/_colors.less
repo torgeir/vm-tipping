@@ -1,8 +1,19 @@
-@color-text: #333;
-@color-link: #f06;
-@color-link-hover: #09f;
+@_color-vm-green:   rgba(27, 92, 24, 1);
+@_color-vm-blue:    rgba(6, 26, 88, 1);
+@_color-vm-orange:  rgba(246, 142, 20, 1);
+@_color-vm-yellow:  rgba(250, 225, 17, 1);
+@_color-vm-red:     rgba(151, 0, 10, 1);
 
-@color-no-outcome: silver;
-@color-correct-outcome: orange;
-@color-correct-result: green;
-@color-wrong-outcome: red;
+@color-text:         @_color-vm-orange;
+@color-text-hilight: lighten(@_color-vm-blue, 10%);
+@color-link:         @_color-vm-yellow;
+@color-link-hover:   lighten(@_color-vm-red, 10%);
+
+@color-no-outcome:      rgba(255, 255, 255, 0.2);
+@color-correct-outcome: darken(@_color-vm-orange, 0%);
+@color-correct-result:  lighten(@_color-vm-green, 10%);
+@color-wrong-outcome:   lighten(@_color-vm-red, 20%);
+
+.fifa-podium-gradient() {
+  .background-image(radial-gradient(@_color-vm-yellow 10%,@_color-vm-green 70%));
+}
