@@ -114,7 +114,7 @@ var updateMatchWithResults = (match, resultMatch) => {
  * Fetch matches for today, with the bets of every player.
  */
 exports.getTodaysMatches = query => {
-  return exports.getMatches({ day: 7 });
+  return exports.getMatches({ day: 8 });
 }
 
 /**

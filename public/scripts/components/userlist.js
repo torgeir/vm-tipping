@@ -32,7 +32,7 @@ module.exports = React.createClass({
         <table>
           {Matches}
         </table>
-        <Link to="matchday" day="7">Se hva som er tippet i dag?</Link>
+        <Link to="matchday" day="8">Se hva som er tippet i dag?</Link>
         <h2>Deltagere</h2>
         <ul>
           {Users}
