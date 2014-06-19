@@ -4,9 +4,12 @@ var Link  = require('rrouter').Link;
 var User  = require('./user');
 var Match = require('./match');
 
+var api = require('../api');
+
 module.exports = React.createClass({
 
   render: function () {
+    var matchDay = api.getMatchDay();
     var users = this.props.users;
     var matches = this.props.matches;
 
@@ -22,7 +25,7 @@ module.exports = React.createClass({
         <tr>
           <td>{match.homename + ' - ' + match.awayname}</td>
           <td>{match.homegoals + ' - ' + match.awaygoals}</td>
-        </tr>        
+        </tr>
       )
     });
 
@@ -32,7 +35,7 @@ module.exports = React.createClass({
         <table>
           {Matches}
         </table>
-        <Link to="matchday" day="8">Se hva som er tippet i dag?</Link>
+        <Link to="matchday" day={matchDay}>Se hva som er tippet i dag?</Link>
         <h2>Deltagere</h2>
         <ul>
           {Users}
