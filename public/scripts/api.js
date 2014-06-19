@@ -56,7 +56,7 @@ exports.getUsers = () => {
           .each(groupId => {
 
             var group = results.group[groupId];
-           
+
             _(group)
               .chain()
               .keys()
@@ -65,7 +65,7 @@ exports.getUsers = () => {
                 var resultMatch = _(matches.items).find(m => m.id == matchId);
                 updateMatchWithResults(match, resultMatch);
                 user.points += match.points;
-              });           
+              });
           })
           .value();
         return user;
@@ -93,16 +93,16 @@ var updateMatchWithResults = (match, resultMatch) => {
     guessedOutcome = 'h';
   } else if(match.awaygoals > match.homegoals) {
     guessedOutcome = 'b';
-  }   
+  }
 
   match.outcome = resultMatch.outcome;
   match.matchPlayed = resultMatch.outcome !== '';
   match.correctResult = match.matchPlayed && resultMatch.homegoals === match.homegoals && resultMatch.awaygoals === match.awaygoals;
   match.correctOutcome =  match.matchPlayed && resultMatch.outcome === guessedOutcome;
   match.actualHomegoals = resultMatch.homegoals;
-  match.actualAwaygoals = resultMatch.awaygoals; 
+  match.actualAwaygoals = resultMatch.awaygoals;
 
-  match.points = 0;  
+  match.points = 0;
   if (match.correctResult) {
     match.points = 20;
   } else if (match.correctOutcome) {
@@ -110,19 +110,27 @@ var updateMatchWithResults = (match, resultMatch) => {
   }
 }
 
+var startDate = new Date('Jun 12, 2014 GMT-03:00');
+
+/**
+ * Get match day number
+ */
+var getMatchDay = exports.getMatchDay = () =>
+  parseInt((new Date() - startDate) / (60 * 60 * 24 * 1000) + 1);
+
+
 /**
  * Fetch matches for today, with the bets of every player.
  */
 exports.getTodaysMatches = query => {
-  return exports.getMatches({ day: 8 });
-}
+  return exports.getMatches({ day: getMatchDay() });
+};
 
 /**
  * Fetch matches for a given day, with the bets of every player.
  */
-exports.getMatches = query => {  
-  var startDate = new Date('Jun 12, 2014 GMT-03:00');  
-  var day = Number(query.day) - 1;    
+exports.getMatches = query => {
+  var day = Number(query.day) - 1;
   var date = new Date(startDate.getTime() + (24 * 3600 * 1000 * day));
 
   var createBets = function(user, match) {
@@ -140,31 +148,31 @@ exports.getMatches = query => {
       awayname: match.awayname,
       homegoals: match.homegoals,
       awaygoals: match.awaygoals,
-      outcome: outcome                           
+      outcome: outcome
     }
   }
 
   return usersPromise.then(users => {
 
-    var results = 
-      _(users) 
+    var results =
+      _(users)
         .chain()
         .map(user => {
 
-          var groupPlay = user.results.group;                      
+          var groupPlay = user.results.group;
           return _(groupPlay)
             .chain()
             .keys()
             .map(groupId => {
 
-              var group = groupPlay[groupId]; 
+              var group = groupPlay[groupId];
               return _(group)
                 .chain()
                 .keys()
                 .map(matchId => group[matchId])
-                .map(match => createBets(user, match)) 
-                .value() 
-            })                        
+                .map(match => createBets(user, match))
+                .value()
+            })
             .value()
         })
         .flatten()
