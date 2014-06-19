@@ -1,11 +1,17 @@
+.pad() {
+  padding: 0 1em;
+}
 .nav(@icon) {
   .fa-icon(@icon);
   font-weight: bold;
-  padding: 0 1em;
+  .pad;
 }
 .previous {
   .nav(@fa-var-angle-double-left);
 }
 .next {
   .nav(@fa-var-angle-double-right);
+}
+.back {
+  .pad;
 }
