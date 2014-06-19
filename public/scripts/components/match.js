@@ -1,6 +1,8 @@
 var React = require('react');
 var _     = require('lodash');
 
+var Vs = require('./vs');
+
 module.exports = React.createClass({
 
   render: function () {
@@ -22,12 +24,12 @@ module.exports = React.createClass({
 
     return (
       <tr className={matchClass}>
-        <td>{match.homename + ' - ' + match.awayname}</td>
+        <td><Vs home={match.homename} away={match.awayname} /></td>
         <td>{matchResult}</td>
         <td>{match.points}</td>
         <td>{match.homegoals + ' - ' + match.awaygoals}</td>
       </tr>
-    );    
+    );
   },
 
   match: function () {

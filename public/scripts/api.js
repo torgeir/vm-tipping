@@ -201,4 +201,26 @@ exports.getMatches = query => {
       })
       .value()
   });
+};
+
+function translate (team) {
+  var translation = matches.translations[team];
+  if (!translation) console.error("no translation for team: ", team);
+  return translation;
+}
+
+/**
+ * Looks up english name from norwegian name
+ */
+exports.translate = team => {
+  var translation = translate(team);
+  return translation.englishname;
+}
+
+/**
+ * Looks up shortname from norwegian name
+ */
+exports.shortname = team => {
+  var translation = translate(team);
+  return translation.shortname;
 }

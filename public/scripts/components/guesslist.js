@@ -2,12 +2,14 @@ var React = require('react');
 var _     = require('lodash');
 
 var Guess = require('./guess');
+var Vs    = require('./vs');
+
 
 module.exports = React.createClass({
 
   render: function () {
     var match = this.match();
-    var score = match.homename + ' - ' + match.awayname + ': ' + match.homegoals + ' - '  + match.awaygoals;
+    var vs = <Vs home={match.homename} away={match.awayname} />
     var bets = _(match.bets)
     						.chain()
     						.map(b => <Guess bet={b} />)
@@ -15,7 +17,7 @@ module.exports = React.createClass({
 
     return (
 			<section className='match-guesses'>
-				<h1>{score}</h1>
+				<h1>{vs}: {match.homegoals} - {match.awaygoals}</h1>
 				<ul>
 					{bets}
 				</ul>
