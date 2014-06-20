@@ -110,7 +110,8 @@ var updateMatchWithResults = (match, resultMatch) => {
   }
 }
 
-var startDate = new Date('Jun 12, 2014 GMT-03:00');
+var START_DATE_FORMAT = 'Jun 12, 2014 %s GMT-03:00';
+var startDate = new Date(START_DATE_FORMAT.replace("%s", ""));
 
 /**
  * Get match day number
@@ -187,6 +188,7 @@ exports.getMatches = query => {
           awayname: m.to,
           homegoals: m.homegoals,
           awaygoals: m.awaygoals,
+          time: m.time,
           bets: _(results)
                   .chain()
                   .filter(r => r.homename == m.from && r.awayname == m.to)
@@ -215,7 +217,7 @@ function translate (team) {
 exports.translate = team => {
   var translation = translate(team);
   return translation.englishname;
-}
+};
 
 /**
  * Looks up shortname from norwegian name
@@ -223,4 +225,13 @@ exports.translate = team => {
 exports.shortname = team => {
   var translation = translate(team);
   return translation.shortname;
-}
+};
+
+/**
+ * Looks up start time of a match in local timezone
+ */
+exports.startTime = timeHhMm => {
+  var time = START_DATE_FORMAT.replace("%s", timeHhMm + ":00");
+  return new Date(time);
+};
+
