@@ -4,6 +4,7 @@ var Link  = require('rrouter').Link;
 var User  = require('./user');
 var Match = require('./match');
 var Vs    = require('./vs');
+var Time  = require('./time');
 
 var api = require('../api');
 
@@ -24,7 +25,7 @@ module.exports = React.createClass({
     var Matches = matches.map(match => {
       return (
         <tr>
-          <td><Vs home={match.homename} away={match.awayname} /></td>
+          <td><Time match={match} /> <Vs home={match.homename} away={match.awayname} /></td>
           <td>{match.homegoals} - {match.awaygoals}</td>
         </tr>
       )
