@@ -19,7 +19,7 @@ module.exports = React.createClass({
     return (
       <li className={betClass + ' guess'}>
         <span>{bet.name}</span>
-        <span>{bet.homegoals + " - " + bet.awaygoals}</span>
+        <span className="guess-score">{bet.homegoals + " - " + bet.awaygoals}</span>
       </li>
     );
   }
