@@ -23,7 +23,7 @@ var matches = {
       {'day':'Thu','date': new Date('Jun 19, 2014 GMT-03:00'),'time':'13:00',id: 715633,'from':'Colombia','to':'Elfenbenskysten','place':'Brasilia', homegoals: 2, awaygoals: 1, outcome: 'h'},
       {'day':'Thu','date': new Date('Jun 19, 2014 GMT-03:00'),'time':'16:00',id: 715639,'from':'Uruguay','to':'England','place':'Sao Paulo', homegoals: 2, awaygoals: 1, outcome: 'h'},
       {'day':'Thu','date': new Date('Jun 19, 2014 GMT-03:00'),'time':'19:00',id: 715634,'from':'Japan','to':'Hellas','place':'Natal', homegoals: 0, awaygoals: 0, outcome: 'u'},
-      {'day':'Fri','date': new Date('Jun 20, 2014 GMT-03:00'),'time':'13:00',id: 715640,'from':'Italia','to':'Costa Rica','place':'Recife', homegoals: 0, awaygoals: 0, outcome: ''},
+      {'day':'Fri','date': new Date('Jun 20, 2014 GMT-03:00'),'time':'13:00',id: 715640,'from':'Italia','to':'Costa Rica','place':'Recife', homegoals: 0, awaygoals: 1, outcome: 'b'},
       {'day':'Fri','date': new Date('Jun 20, 2014 GMT-03:00'),'time':'16:00',id: 715645,'from':'Sveits','to':'Frankrike','place':'Salvador', homegoals: 0, awaygoals: 0, outcome: ''},
       {'day':'Fri','date': new Date('Jun 20, 2014 GMT-03:00'),'time':'19:00',id: 715646,'from':'Honduras','to':'Ecuador','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
       {'day':'Sat','date': new Date('Jun 21, 2014 GMT-03:00'),'time':'13:00',id: 715651,'from':'Argentina','to':'Iran','place':'Belo Horizonte', homegoals: 0, awaygoals: 0, outcome: ''},
