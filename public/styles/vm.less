@@ -2,15 +2,22 @@
 @import "_colors";
 @import "_fonts";
 @import "_icons";
+@import "_mediaqueries";
 
 @import "vendor/lesshat";
 
-// globals
 * { box-sizing: border-box; }
+
+// globals
+@import "_mixins";
 @import "_global";
 @import "_design";
 
+
 // components
+@import "components/_score";
+@import "components/_vs";
+@import "components/_time";
 @import "components/_flag";
 @import "components/_menu";
 @import "components/_guess";

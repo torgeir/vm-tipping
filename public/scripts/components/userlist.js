@@ -3,6 +3,7 @@ var Link  = require('rrouter').Link;
 
 var User  = require('./user');
 var Match = require('./match');
+var Score = require('./score');
 var Vs    = require('./vs');
 var Time  = require('./time');
 
@@ -26,7 +27,7 @@ module.exports = React.createClass({
       return (
         <tr>
           <td><Time match={match} /> <Vs home={match.homename} away={match.awayname} /></td>
-          <td>{match.homegoals} - {match.awaygoals}</td>
+          <td><Score match={match} /></td>
         </tr>
       )
     });

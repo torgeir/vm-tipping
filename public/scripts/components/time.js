@@ -1,8 +1,6 @@
 var React = require('react');
 var _     = require('lodash');
 
-var Match = require('./match');
-var Guess = require('./guess');
 var api   = require('../api');
 
 function startTime (time) {
@@ -21,12 +19,11 @@ module.exports = React.createClass({
   render: function () {
 
     return (
-      <span>{this.hh()}:{this.mm()}</span>
+      <span className="time">{this.hh()}:{this.mm()}</span>
     );
   },
 
   time: function () {
-    console.log(this.props.match);
     return this.props.match.time;
   },
 

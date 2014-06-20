@@ -6,13 +6,24 @@ var Flag  = require('./flag');
 module.exports = React.createClass({
 
   render: function () {
+    var align = this.props.align;
+
+    var style = {};
+    if (align) {
+      style["float"] = align;
+    }
 
     return (
-      <span>
-        <Flag team={this.home()} />
-        {this.home()} -
-        <Flag team={this.away()} />
-        {this.away()}
+      <span style={style}>
+        <span className="vs-home">
+          <Flag team={this.home()} />
+          {this.home()}
+        </span>
+        <span className="vs-separator"> - </span>
+        <span className="vs-away">
+          <Flag team={this.away()} />
+          {this.away()}
+        </span>
       </span>
     );
   },

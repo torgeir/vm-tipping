@@ -1,0 +1,24 @@
+.m-inline() {
+  @media (min-width: @media-m) {
+    display: inline;
+  }
+}
+
+.s-none-m-inline() {
+  display: none;
+  .m-inline;
+}
+
+.s-block-m-inline() {
+  display: block;
+  .m-inline;
+}
+
+.clearfix() {
+
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
