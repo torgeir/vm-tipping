@@ -1,16 +1,25 @@
 .pad() {
-  padding: 0 0.5em;
+  padding: 0.5em;
+  padding-bottom: 0;
 }
 .nav(@icon) {
   .fa-icon(@icon);
   font-weight: bold;
+  width: 10%;
   .pad;
+}
+.matchday {
+  display: inline-block;
+  text-align: center;
+  width: 80%;
+  margin: 1em 0;
 }
 .previous {
   .nav(@fa-var-angle-double-left);
 }
 .next {
   .nav(@fa-var-angle-double-right);
+  text-align: right;
 }
 .back {
   .pad;

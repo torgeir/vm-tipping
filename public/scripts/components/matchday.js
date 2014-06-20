@@ -32,7 +32,7 @@ module.exports = React.createClass({
         <Menu />
         <nav>
           <Link to="matchday" day={prev} className="previous"></Link>
-          <h1>Kampdag {day}</h1>
+          <h1 className="matchday">Kampdag {day}</h1>
           <Link to="matchday" day={next} className="next"></Link>
         </nav>
         {matches}
