@@ -110,21 +110,26 @@ var updateMatchWithResults = (match, resultMatch) => {
   }
 }
 
-var START_DATE_FORMAT = 'Jun 12, 2014 17:00:00 GMT-03:00';
+// set time to 00:00 to ease calculating current match day
+var START_DATE_FORMAT = 'Jun 12, 2014 00:00:00 GMT-03:00';
 var startDate = new Date(START_DATE_FORMAT);
+startDate.setHours(0, 0);
 
 /**
  * Get match day number
  */
-var getMatchDay = exports.getMatchDay = () =>
-  parseInt((new Date() - startDate) / (60 * 60 * 24 * 1000) + 1);
+var getMatchDay = exports.getMatchDay = () => {
+  var today = new Date();
+  return parseInt((today - startDate) / (60 * 60 * 24 * 1000)) + 1;
+};
 
 
 /**
  * Fetch matches for today, with the bets of every player.
  */
 exports.getTodaysMatches = query => {
-  return exports.getMatches({ day: getMatchDay() });
+  var day = getMatchDay();
+  return exports.getMatches({ day: day });
 };
 
 /**
