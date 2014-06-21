@@ -110,8 +110,8 @@ var updateMatchWithResults = (match, resultMatch) => {
   }
 }
 
-var START_DATE_FORMAT = 'Jun 12, 2014 %s GMT-03:00';
-var startDate = new Date(START_DATE_FORMAT.replace("%s", ""));
+var START_DATE_FORMAT = 'Jun 12, 2014 17:00:00 GMT-03:00';
+var startDate = new Date(START_DATE_FORMAT);
 
 /**
  * Get match day number
@@ -181,14 +181,15 @@ exports.getMatches = query => {
 
     return _(matches.items)
       .chain()
-      .filter(m => m.date.getTime() === date.getTime())
+      .filter(m => m.date.getFullYear() === date.getFullYear() && m.date.getMonth() === date.getMonth() && m.date.getDate() == date.getDate())
       .map(m => {
+
         return {
           homename: m.from,
           awayname: m.to,
           homegoals: m.homegoals,
           awaygoals: m.awaygoals,
-          time: m.time,
+          date: m.date,
           bets: _(results)
                   .chain()
                   .filter(r => r.homename == m.from && r.awayname == m.to)
@@ -228,10 +229,25 @@ exports.shortname = team => {
 };
 
 /**
- * Looks up start time of a match in local timezone
+ * Tell if a match has passed
  */
-exports.startTime = timeHhMm => {
-  var time = START_DATE_FORMAT.replace("%s", timeHhMm + ":00");
-  return new Date(time);
+var hasPassed = exports.hasPassed = match => {
+  var duration = (45 * 2 + 15) ;
+  var durationMs = duration * 60 * 1000;
+  var matchstartWithDuration = (match.date.getTime() + durationMs);
+  return new Date() > matchstartWithDuration;
 };
 
+/**
+ * Tell if a match has started
+ */
+var hasStarted = exports.hasStarted = match => {
+  return new Date() > match.date;
+};
+
+/**
+ * Tell if a match is ongoing
+ */
+exports.isOngoing = match => {
+  return hasStarted(match) && !hasPassed(match);
+};

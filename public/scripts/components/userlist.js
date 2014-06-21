@@ -24,8 +24,17 @@ module.exports = React.createClass({
 
     var Users = users.map(user => <User user={user} />);
     var Matches = matches.map(match => {
+
+      var className = "";
+      if (api.isOngoing(match)) {
+        className = 'ongoing';
+      }
+      else if (api.hasPassed(match)) {
+        className = 'complete';
+      }
+
       return (
-        <tr>
+        <tr className={className}>
           <td><Time match={match} /> <Vs home={match.homename} away={match.awayname} /></td>
           <td><Score match={match} /></td>
         </tr>
@@ -46,4 +55,5 @@ module.exports = React.createClass({
       </section>
     );
   }
+
 });

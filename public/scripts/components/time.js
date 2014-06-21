@@ -3,8 +3,8 @@ var _     = require('lodash');
 
 var api   = require('../api');
 
-function startTime (time) {
-  return api.startTime(time);
+function startTime (match) {
+  return api.startTime(match);
 }
 
 function pad (time) {
@@ -23,16 +23,16 @@ module.exports = React.createClass({
     );
   },
 
-  time: function () {
-    return this.props.match.time;
+  match: function () {
+    return this.props.match;
   },
 
   hh: function () {
-    return pad(startTime(this.time()).getHours());
+    return pad(this.match().date.getHours());
   },
 
   mm: function () {
-    return pad(startTime(this.time()).getMinutes());
+    return pad(this.match().date.getMinutes());
   }
 
 });

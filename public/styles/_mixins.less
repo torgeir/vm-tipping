@@ -22,3 +22,8 @@
     clear: both;
   }
 }
+
+.blink() {
+  .keyframes(~'blink, 0%{opacity: 1;} 50%{opacity: 0;} 100%{ opacity 0;}');
+  .animation(blink 2s linear infinite);
+}
