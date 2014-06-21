@@ -1,6 +1,8 @@
 var React = require('react');
 var _     = require('lodash');
 
+var api = require('../api');
+
 module.exports = React.createClass({
 
   render: function () {
