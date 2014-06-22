@@ -20,7 +20,7 @@ var funfacts = {
   'Frankrike': 'Åpningskampen blir tidenes første landskamp mellom Frankrike og Honduras',
   'Honduras': '"Fotballkrigen" mellom Honduras og El Salvador i 1969 var - foreløpig - den siste krigen hvor propellfly ble benyttet.',
   'Argentina': 'Argentina har vært i fire VM-semifinaler og vunnet ale fire, og han Carlos Tevez har et golf-handikap på 13.',
-  'Bosnia Hercegovina': 'Bosnia var det eneste laget i hele UEFA som ikke fikk suspensjoner i løpet av VM-kvaliken. Så mye for den berømte Balkan-taklingen med strake knotter i susphøyde.',
+  'Bosnia-Hercegovina': 'Bosnia var det eneste laget i hele UEFA som ikke fikk suspensjoner i løpet av VM-kvaliken. Så mye for den berømte Balkan-taklingen med strake knotter i susphøyde.',
   'Iran': 'Iran hadde rekorden for største seier i en VM-kvalifiseringskamp med 19-0 over Guam 24.11.2000. En rekord som bare varte til 9. april året etter da Australia først slo Toga 22-0, før de tre dager etter slo Amerikansk Samoa 31-0.',
   'Nigeria': 'Etter lagets dårlige innsats i VM 2010 bestemte Nigerias president Goodluck Jonathan seg for å trekke laget fra alle internasjonale turneringer i to år. En agjørelse som ble omgjort uka etter da alle hadde fått seg en kklem og en vaffel og roet seg litt.',
   'Tyskland': 'Den tidligere goalgetteren og tyske landslagstreneren Rudi Völlers kallenavn var Tante Käthe, rett og slett fordi folk mente han så ut som ei gammel tante på grunn av sin krøllete manke.',
