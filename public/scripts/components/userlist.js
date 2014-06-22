@@ -1,3 +1,4 @@
+var _     = require('lodash');
 var React = require('react');
 var Link  = require('rrouter').Link;
 
@@ -6,8 +7,10 @@ var Match = require('./match');
 var Score = require('./score');
 var Vs    = require('./vs');
 var Time  = require('./time');
+var Flag  = require('./flag');
 
-var api = require('../api');
+var api     = require('../api');
+var Funfact = require('../funfacts');
 
 module.exports = React.createClass({
 
@@ -21,6 +24,9 @@ module.exports = React.createClass({
         <p>Loading..</p>
       );
     }
+
+    var randomTeam = _(Funfact).chain().keys().sample().value();
+    console.log(randomTeam);
 
     var Users = users.map(user => <User user={user} />);
     var Matches = matches.map(match => {
@@ -52,6 +58,8 @@ module.exports = React.createClass({
         <ul>
           {Users}
         </ul>
+        <h2>Pondus Funfacts</h2>
+        <p><Flag team={randomTeam} /> {Funfact[randomTeam]}</p>
       </section>
     );
   }
