@@ -1,9 +1,11 @@
 var React = require('react');
 var _     = require('lodash');
 
-var Guess = require('./guess');
-var Score = require('./score');
-var Vs    = require('./vs');
+var Guess   = require('./guess');
+var Score   = require('./score');
+var Flag    = require('./flag')
+var Vs      = require('./vs');
+var Funfact = require('../funfacts');
 
 
 module.exports = React.createClass({
@@ -24,6 +26,8 @@ module.exports = React.createClass({
         <ul>
           {bets}
         </ul>
+        <p><Flag team={match.homename} /> {Funfact[match.homename]}</p>
+        <p><Flag team={match.awayname} /> {Funfact[match.awayname]}</p>
       </section>
     );
   },
