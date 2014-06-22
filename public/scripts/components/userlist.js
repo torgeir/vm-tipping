@@ -26,8 +26,7 @@ module.exports = React.createClass({
     }
 
     var randomTeam = _(Funfact).chain().keys().sample().value();
-    console.log(randomTeam);
-
+    
     var Users = users.map(user => <User user={user} />);
     var Matches = matches.map(match => {
 
