@@ -294,6 +294,43 @@ var hasStarted = exports.hasStarted = match => {
 /**
  * Tell if a match is ongoing
  */
-exports.isOngoing = match => {
+var isOngoing = exports.isOngoing = match => {
   return hasStarted(match) && !hasPassed(match);
+};
+
+/**
+ * Fetch live scores for ongoing match
+ */
+var currentMatches = ajax.get("http://worldcup.sfg.io/matches/current");
+exports.fetchLiveResult = match => {
+  if (!isOngoing(match)) {
+    return Promise.reject(new Error('match is not ongoing ' + match.id));
+  }
+
+  var englishHomeTeam = translate(match.homename);
+  var englishAwayTeam = translate(match.awayname);
+
+  function isCurrentMatch (result) {
+    return result.home_team.code === englishHomeTeam.shortname &&
+           result.away_team.code === englishAwayTeam.shortname;
+  }
+
+  return currentMatches
+    .then(res => res.text)
+    .then(JSON.parse)
+    .then(function (results) {
+      return _.chain(results)
+        .filter(isCurrentMatch)
+        .first()
+        .value();
+    })
+    .then(function (result) {
+      if (!result) {
+        throw new Error("got no live results for this match " + JSON.stringify(match));
+      }
+      match.homegoals = result.home_team.goals;
+      match.awaygoals = result.away_team.goals;
+      return match;
+    })
+    .catch(Promise.reject);
 };

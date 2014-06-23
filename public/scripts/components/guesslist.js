@@ -12,7 +12,6 @@ module.exports = React.createClass({
 
   render: function () {
     var match = this.match();
-    var vs = <Vs home={match.homename} away={match.awayname} align="left"/>
 
     var bets =
       _(match.bets)
@@ -22,7 +21,10 @@ module.exports = React.createClass({
 
     return (
       <section className='match-guesses'>
-        <h1>{vs} <Score match={match} align="right" /></h1>
+        <h1>
+          <Vs home={match.homename} away={match.awayname} align="left"/>
+          <Score match={match} align="right" />
+        </h1>
         <ul>
           {bets}
         </ul>

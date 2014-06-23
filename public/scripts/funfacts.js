@@ -9,7 +9,7 @@ var funfacts = {
   'Australia': 'Archie Thompson puttet 13 ganger mot Amerikansk Samoa i 2001. Asustralia vant 31-0. Begge deler er rekord på landslagsnivå.',
   'Colombia': 'Som alle vet har Colombia rekord for største opphenting i et VM da de gikk fra 0-4 til 4-4 mot USSR i 1962. Den kampen var også minneverdig fordi Colombias MArcos Coll scoret direkte på corner som den første og eneste i VM-historien',
   'Hellas': 'Mikos this diagoniou perasma me tin ipostirixi betyr diagonal langpasning med stuss på gresk',
-  'Elfenbenkysten': 'Elfenbenkysten har deltatt i, og vunnet, de to mestscorende straffekonkurransene i internasjonal fotball, begge i Afrikamesterkspaet. 11-10 oer GHana i 92-finalen og 12-11 over Kamerun i kvartfinalen i 2006, begge etter 24 straffer.',
+  'Elfenbenskysten': 'Elfenbenkysten har deltatt i, og vunnet, de to mestscorende straffekonkurransene i internasjonal fotball, begge i Afrikamesterkspaet. 11-10 oer GHana i 92-finalen og 12-11 over Kamerun i kvartfinalen i 2006, begge etter 24 straffer.',
   'Japan': 'Japan deltok i Copa America i 1999 og er invitert til å delta igjen i 2015. De er det eneste landet utenfor kontinentet som nonensinne har deltatt.',
   'Uruguay': '"Los Charruas", landslagets kallenavn, er navnet på indianerne som sloss tappert mot de europeiske kolonialistene. Modige, tapre og raskt utryddet.',
   'Costa Rica': 'Tøyselandet Costa Rica har en Chinchilla som president. Sjekk det om du ikke tror oss.',
