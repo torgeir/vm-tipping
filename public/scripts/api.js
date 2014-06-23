@@ -50,6 +50,8 @@ exports.getUsers = () => {
       .map(user => {
         user.points = 0;
         var results = user.results;
+
+        // Group
         _(results.group)
           .chain()
           .keys()
@@ -68,6 +70,21 @@ exports.getUsers = () => {
               });
           })
           .value();
+
+        // Eight - the following block of code can be
+        // refactored into a function and used for quarter and semi finals as well.
+        _(results.eight)
+          .chain()
+          .keys()
+          .each(matchId => {
+            var match = results.eight[matchId];
+            var resultMatch = _(matches.eight).find(m => m.id == matchId);
+            updateMatchWithResults(match, resultMatch);
+            updateMatchWithFinalResults(match, resultMatch);
+            user.points += match.points;
+          })
+          .value();
+
         return user;
       })
       .sortBy(user => user.points * -1)
@@ -108,6 +125,24 @@ var updateMatchWithResults = (match, resultMatch) => {
   } else if (match.correctOutcome) {
     match.points = 10;
   }
+}
+
+var updateMatchWithFinalResults = (match, resultMatch) => {
+  var homePoints = 0;
+  var awayPoints = 0;
+
+  if (match.homename == resultMatch.from) {
+    homePoints = 15;
+  } else if(match.homename == resultMatch.to) {
+    homePoints = 5;
+  }
+
+  if (match.awayname == resultMatch.to) {
+    awayPoints = 15;
+  } else if(match.awayname == resultMatch.from) {
+    awayPoints = 5;
+  }
+  match.points = homePoints + awayPoints; // Should be += if awarded points for correct result and outcome as well as correct team in correct position.
 }
 
 // set time to 00:00 to ease calculating current match day
