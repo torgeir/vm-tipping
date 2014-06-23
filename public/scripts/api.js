@@ -143,7 +143,6 @@ var updateMatchWithFinalResults = (match, resultMatch) => {
     awayPoints = 5;
   }
   match.points = homePoints + awayPoints; // Should be += if awarded points for correct result and outcome as well as correct team in correct position.
-  console.log(match, resultMatch);
 }
 
 // set time to 00:00 to ease calculating current match day
