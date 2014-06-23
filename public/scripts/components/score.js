@@ -46,7 +46,7 @@ module.exports = React.createClass({
     (function fetchLiveResults () {
       api.fetchLiveResult(match)
         .then(results => self.setState({ homegoals: results.homegoals, awaygoals: results.awaygoals }))
-        .catch(err => console.error(err))
+        .catch(Promise.reject)
         .finally(() => setTimeout(fetchLiveResults, everyMs));
     })();
   }
