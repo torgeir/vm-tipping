@@ -11,7 +11,7 @@ module.exports = React.createClass({
     this.setState({ homegoals: match.homegoals, awaygoals: match.awaygoals });
 
     if (api.isOngoing(match)) {
-      this.scheduleFetchLiveResults(2000);
+      this.scheduleFetchLiveResults(10 * 1000);
     }
   },
 
@@ -46,7 +46,7 @@ module.exports = React.createClass({
     (function fetchLiveResults () {
       api.fetchLiveResult(match)
         .then(results => self.setState({ homegoals: results.homegoals, awaygoals: results.awaygoals }))
-        .catch(Promise.reject)
+        .catch(err => console.error(err))
         .finally(() => setTimeout(fetchLiveResults, everyMs));
     })();
   }

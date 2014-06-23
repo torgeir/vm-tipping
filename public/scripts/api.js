@@ -301,8 +301,9 @@ var isOngoing = exports.isOngoing = match => {
 /**
  * Fetch live scores for ongoing match
  */
-var currentMatches = ajax.get("http://worldcup.sfg.io/matches/current");
 exports.fetchLiveResult = match => {
+  var currentMatches = ajax.get("http://worldcup.sfg.io/matches/current");
+
   if (!isOngoing(match)) {
     return Promise.reject(new Error('match is not ongoing ' + match.id));
   }
@@ -332,5 +333,7 @@ exports.fetchLiveResult = match => {
       match.awaygoals = result.away_team.goals;
       return match;
     })
-    .catch(Promise.reject);
+    .catch(function () {
+      return Promise.reject('failed to fetch live scores for match');
+    });
 };
