@@ -62,7 +62,7 @@ exports.getUsers = () => {
               .keys()
               .each(matchId => {
                 var match = group[matchId];
-                var resultMatch = _(matches.items).find(m => m.id == matchId);
+                var resultMatch = _(matches.group).find(m => m.id == matchId);
                 updateMatchWithResults(match, resultMatch);
                 user.points += match.points;
               });
@@ -184,9 +184,15 @@ exports.getMatches = query => {
         .flatten()
         .value();
 
-    return _(matches.items)
+    return _(matches.group)
       .chain()
-      .filter(m => m.date.getFullYear() === date.getFullYear() && m.date.getMonth() === date.getMonth() && m.date.getDate() == date.getDate())
+      .filter(m => {
+        var isSameMonthAndYear = m.date.getFullYear() === date.getFullYear() && m.date.getMonth() === date.getMonth();
+        var isMidnightGame = m.date.getHours() == '00';
+        var isMidnightGameTomorrow = isSameMonthAndYear && m.date.getDate() == (date.getDate() + 1) && isMidnightGame;
+        var isToday = isSameMonthAndYear && m.date.getDate() == date.getDate() && !isMidnightGame;
+        return isToday || isMidnightGameTomorrow;
+      })
       .map(m => {
 
         return {
