@@ -25,7 +25,11 @@ module.exports = React.createClass({
       return (<div>Loading..</div>);
     }
 
-    var matches = _(this.props.matches).chain().map(m => <GuessList match={m}/>).value();
+    var matches =
+      _(this.props.matches)
+        .chain()
+        .map(m => <GuessList match={m}/>)
+        .value();
 
     return (
       <section>
