@@ -278,7 +278,7 @@ exports.shortname = team => {
  * Tell if a match has passed
  */
 var hasPassed = exports.hasPassed = match => {
-  var duration = (45 * 2 + 15) ;
+  var duration = (45 * 2 + 25);
   var durationMs = duration * 60 * 1000;
   var matchstartWithDuration = (match.date.getTime() + durationMs);
   return new Date() > matchstartWithDuration;
