@@ -26,11 +26,11 @@ module.exports = React.createClass({
     }
 
     var randomTeam = _(Funfact).chain().keys().sample().value();
-    
+
     var Users = users.map(user => <User user={user} />);
     var Matches = matches.map(match => {
 
-      var className = "";
+      var className = "notstarted";
       if (api.isOngoing(match)) {
         className = 'ongoing';
       }
