@@ -163,7 +163,7 @@ var getMatchDay = exports.getMatchDay = () => {
 /**
  * Fetch matches for today, with the bets of every player.
  */
-exports.getTodaysMatches = query => {
+var getTodaysMatches = exports.getTodaysMatches = query => {
   var day = getMatchDay();
   return exports.getMatches({ day: day });
 };
@@ -302,9 +302,7 @@ var isOngoing = exports.isOngoing = match => {
 /**
  * Fetch live scores for ongoing match
  */
-exports.fetchLiveResult = match => {
-  var currentMatches = ajax.get("http://worldcup.sfg.io/matches/current");
-
+var fetchLiveResult = (match, currentMatches) => {
   if (!isOngoing(match)) {
     return Promise.reject(new Error('match is not ongoing ' + match.id));
   }
@@ -332,9 +330,27 @@ exports.fetchLiveResult = match => {
       }
       match.homegoals = result.home_team.goals;
       match.awaygoals = result.away_team.goals;
+
+      match.outcome = 'u';
+      if (match.homegoals > match.awaygoals) {
+        match.outcome = 'h';
+      } else if(match.homegoals < match.awaygoals) {
+        match.outcome = 'b';
+      }
+
       return match;
     })
     .catch(function () {
       return Promise.reject('failed to fetch live scores for match');
     });
 };
+
+(function updateMatches() {
+  var currentMatches = ajax.get("http://worldcup.sfg.io/matches/current");
+  getTodaysMatches().then(matches => {
+    _(matches).each((i, m) => {
+      fetchLiveResult(m, currentMatches).catch(err => {});
+    });
+  });
+  setTimeout(updateMatches, 20*1000);
+})();
