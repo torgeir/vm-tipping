@@ -24,7 +24,7 @@ module.exports = React.createClass({
 
     return (
       <tr className={matchClass}>
-        <td><Vs home={match.homename} away={match.awayname} /></td>
+        <td><Vs home={match.homename} homeclass={match.homeclass} away={match.awayname} awayclass={match.awayclass} /></td>
         <td>{matchResult}</td>
         <td>{match.points}</td>
         <td>{match.homegoals + ' - ' + match.awaygoals}</td>

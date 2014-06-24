@@ -126,14 +126,18 @@ var updateMatchWithFinalResults = (match1, match2, resultMatch1, resultMatch2) =
   var calculatePoints = (match, result1, result2) => {
     match.points = 0; // NB resets points.
     if (match.homename == result1.from) {
+      match.homeclass = 'correct-team-correct-position';
       match.points += 15;
     } else if (match.homename == result2.to) {
+      match.homeclass = 'correct-team-wrong-position';
       match.points += 5;
     }
 
     if (match.awayname == result1.to) {
+      match.awayclass = 'correct-team-correct-position';
       match.points += 15;
     } else if (match.awayname == result2.from) {
+      match.awayclass = 'correct-team-wrong-position';
       match.points += 5;
     }
   }

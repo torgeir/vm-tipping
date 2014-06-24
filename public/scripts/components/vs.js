@@ -15,12 +15,12 @@ module.exports = React.createClass({
 
     return (
       <span style={style}>
-        <span className="vs-home">
+        <span className={'vs-home ' + this.homeclass()}>
           <Flag team={this.home()} />
           {this.home()}
         </span>
         <span className="vs-separator"> - </span>
-        <span className="vs-away">
+        <span className={'vs-away ' + this.awayclass()}>
           <Flag team={this.away()} />
           {this.away()}
         </span>
@@ -32,7 +32,15 @@ module.exports = React.createClass({
     return this.props.home;
   },
 
+  homeclass: function() {
+    return this.props.homeclass || '';
+  },
+
   away: function () {
     return this.props.away;
+  },
+
+  awayclass: function() {
+    return this.props.awayclass || '';
   }
 });
