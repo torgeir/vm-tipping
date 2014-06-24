@@ -302,8 +302,8 @@ var fetchLiveResult = (match, currentMatches) => {
     return Promise.reject(new Error('match is not ongoing ' + match.id));
   }
 
-  var englishHomeTeam = translate(match.homename);
-  var englishAwayTeam = translate(match.awayname);
+  var englishHomeTeam = translate(match.from);
+  var englishAwayTeam = translate(match.to);
 
   function isCurrentMatch (result) {
     return result.home_team.code === englishHomeTeam.shortname &&
@@ -342,12 +342,13 @@ var fetchLiveResult = (match, currentMatches) => {
 
 (function updateMatches() {
   var currentMatches = ajax.get("http://worldcup.sfg.io/matches/current");
-  getTodaysMatches().then(matches => {
-    _(matches).each((match, i) => {
+  // TODO include other finals
+  _(matches.group)
+    .filter(isOngoing)
+    .each(match => {
       fetchLiveResult(match, currentMatches)
         .catch(err => {})
         .then(() => eventbus.emit('reload'));
     });
-  });
   setTimeout(updateMatches, 20 * 1000);
 })();
