@@ -231,24 +231,18 @@ exports.getMatches = query => {
         return isToday || isMidnightGameTomorrow;
       })
       .map(m => {
-
-        return {
-          homename: m.from,
-          awayname: m.to,
-          homegoals: m.homegoals,
-          awaygoals: m.awaygoals,
-          date: m.date,
-          bets: _(results)
-                  .chain()
-                  .filter(r => r.homename == m.from && r.awayname == m.to)
-                  .map(b => {
-                    b.matchPlayed = (m.outcome !== '');
-                    b.correctOutcome = (b.outcome === m.outcome);
-                    b.correctResult = (b.homegoals === m.homegoals && b.awaygoals == m.awaygoals);
-                    return b;
-                  })
-                  .value()
-        }
+        m.homename = m.from;
+        m.awayname = m.to;
+        m.bets = _(results)
+                    .filter(r => r.homename == m.from && r.awayname == m.to)
+                    .map(b => {
+                      b.matchPlayed = (m.outcome !== '');
+                      b.correctOutcome = (b.outcome === m.outcome);
+                      b.correctResult = (b.homegoals === m.homegoals && b.awaygoals == m.awaygoals);
+                      return b;
+                    })
+                    .value();
+        return m;
       })
       .value()
   });
