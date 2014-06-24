@@ -349,7 +349,7 @@ var fetchLiveResult = (match, currentMatches) => {
 (function updateMatches() {
   var currentMatches = ajax.get("http://worldcup.sfg.io/matches/current");
   getTodaysMatches().then(matches => {
-    _(matches).each((i, match) => {
+    _(matches).each((match, i) => {
       fetchLiveResult(match, currentMatches)
         .catch(err => {})
         .then(() => eventbus.emit('reload'));
