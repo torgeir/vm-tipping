@@ -5,16 +5,6 @@ var api = require('../api');
 
 module.exports = React.createClass({
 
-  componentDidMount: function () {
-    var match = this.match();
-
-    this.setState({ homegoals: match.homegoals, awaygoals: match.awaygoals });
-
-    if (api.isOngoing(match)) {
-      this.scheduleFetchLiveResults(10 * 1000);
-    }
-  },
-
   render: function () {
     var align = this.props.align;
 
@@ -23,31 +13,16 @@ module.exports = React.createClass({
       style["float"] = align;
     }
 
-    if (!this.state) {
-      return (<div></div>);
-    }
-
     return (
       <span style={style}>
-        <span className="score-home">{this.state.homegoals}</span>
+        <span className="score-home">{this.match().homegoals}</span>
         <span className="score-separator"> - </span>
-        <span className="score-away">{this.state.awaygoals}</span>
+        <span className="score-away">{this.match().awaygoals}</span>
       </span>
     );
   },
 
   match: function () {
     return this.props.match;
-  },
-
-  scheduleFetchLiveResults: function (everyMs) {
-    var self = this,
-        match = this.match();
-    (function fetchLiveResults () {
-      api.fetchLiveResult(match)
-        .then(results => self.setState({ homegoals: results.homegoals, awaygoals: results.awaygoals }))
-        .catch(err => console.error(err))
-        .finally(() => setTimeout(fetchLiveResults, everyMs));
-    })();
   }
 });
