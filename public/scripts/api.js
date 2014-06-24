@@ -46,21 +46,18 @@ var usersPromise = rawUserDataPromise().then(res => {
 exports.getUsers = () => {
   return usersPromise.then(users =>
     _(users)
-      .chain()
       .map(user => {
         user.points = 0;
         var results = user.results;
 
         // Group
         _(results.group)
-          .chain()
           .keys()
           .each(groupId => {
 
             var group = results.group[groupId];
 
             _(group)
-              .chain()
               .keys()
               .each(matchId => {
                 var match = group[matchId];
@@ -71,17 +68,15 @@ exports.getUsers = () => {
           })
           .value();
 
-        // Eight - the following block of code can be
-        // refactored into a function and used for quarter and semi finals as well.
-        _(results.eight)
-          .chain()
-          .keys()
-          .each(matchId => {
-            var match = results.eight[matchId];
-            var resultMatch = _(matches.eight).find(m => m.id == matchId);
-            updateMatchWithResults(match, resultMatch);
-            updateMatchWithFinalResults(match, resultMatch);
-            user.points += match.points;
+        // Eight - finals. Same method can be used for quarter and semi final.
+        _(matches.eight)
+          .groupBy( (obj, i) => Math.floor(i/2))
+          .each(g => {
+            var resultMatch1 = g[0];
+            var resultMatch2 = g[1];
+            var guessMatch1 = results.eight[resultMatch1.id];
+            var guessMatch2 = results.eight[resultMatch2.id];
+            updateMatchWithFinalResults(guessMatch1, guessMatch2, resultMatch1, resultMatch2);
           })
           .value();
 
@@ -127,22 +122,24 @@ var updateMatchWithResults = (match, resultMatch) => {
   }
 }
 
-var updateMatchWithFinalResults = (match, resultMatch) => {
-  var homePoints = 0;
-  var awayPoints = 0;
+var updateMatchWithFinalResults = (match1, match2, resultMatch1, resultMatch2) => {
+  var calculatePoints = (match, result1, result2) => {
+    match.points = 0; // NB resets points.
+    if (match.homename == result1.from) {
+      match.points += 15;
+    } else if (match.homename == result2.to) {
+      match.points += 5;
+    }
 
-  if (match.homename == resultMatch.from) {
-    homePoints = 15;
-  } else if(match.homename == resultMatch.to) {
-    homePoints = 5;
+    if (match.awayname == result1.to) {
+      match.points += 15;
+    } else if (match.awayname == result2.from) {
+      match.points += 5;
+    }
   }
 
-  if (match.awayname == resultMatch.to) {
-    awayPoints = 15;
-  } else if(match.awayname == resultMatch.from) {
-    awayPoints = 5;
-  }
-  match.points = homePoints + awayPoints; // Should be += if awarded points for correct result and outcome as well as correct team in correct position.
+  calculatePoints(match1, resultMatch1, resultMatch2);
+  calculatePoints(match2, resultMatch2, resultMatch1);
 }
 
 // set time to 00:00 to ease calculating current match day
