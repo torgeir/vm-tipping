@@ -9,6 +9,7 @@ module.exports = React.createClass({
     var match = this.match();
 
     var matchClass = 'guess-no-outcome';
+    var pointClass = (match.points > 0 && !match.matchPlayed) ? 'guess-correct-result' : '';
 
     if (match.matchPlayed) {
       if (match.correctResult) {
@@ -26,7 +27,7 @@ module.exports = React.createClass({
       <tr className={matchClass}>
         <td><Vs home={match.homename} homeclass={match.homeclass} away={match.awayname} awayclass={match.awayclass} /></td>
         <td>{matchResult}</td>
-        <td>{match.points}</td>
+        <td className={pointClass}>{match.points}</td>
         <td>{match.homegoals + ' - ' + match.awaygoals}</td>
       </tr>
     );
