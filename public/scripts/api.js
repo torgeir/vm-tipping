@@ -3,6 +3,7 @@ var Promise = require('bluebird');
 
 var ajax = require('./ajax');
 var matches = require('./data');
+var eventbus = require('./eventbus');
 
 // Fetch raw data immediately
 var rawUserDataPromise = () => ajax.get("http://dev.wa.gd/json");
@@ -348,9 +349,11 @@ var fetchLiveResult = (match, currentMatches) => {
 (function updateMatches() {
   var currentMatches = ajax.get("http://worldcup.sfg.io/matches/current");
   getTodaysMatches().then(matches => {
-    _(matches).each((i, m) => {
-      fetchLiveResult(m, currentMatches).catch(err => {});
+    _(matches).each((i, match) => {
+      fetchLiveResult(match, currentMatches)
+        .catch(err => {})
+        .then(() => eventbus.emit('reload'));
     });
   });
-  setTimeout(updateMatches, 20*1000);
+  setTimeout(updateMatches, 20 * 1000);
 })();

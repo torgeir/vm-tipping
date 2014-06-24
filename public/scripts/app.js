@@ -2,13 +2,15 @@ var React     = window.React = require('react'); // window.React loads chrome re
 var RRouter   = require('rrouter');
 var FastClick = require('fastclick');
 
-var Routes = require('./routes');
-
 var appEl = document.querySelector("#app");
 
 FastClick(appEl);
 
 React.initializeTouchEvents(true);
 
-RRouter.start(Routes, view =>
+var Routes = require('./routes');
+var routing = RRouter.start(Routes, view =>
   React.renderComponent(view, appEl));
+
+var eventbus = require('./eventbus');
+eventbus.on('reload', () => routing.update());

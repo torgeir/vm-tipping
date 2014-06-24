@@ -15,7 +15,7 @@ var getMatches = Api.getMatches.bind(Api);
 var getTodaysMatches = Api.getTodaysMatches.bind(Api);
 
 module.exports = (
-  <Routes>  	
+  <Routes>
     <Route name="index" path="/" view={UserList} usersPromise={getUsers} matchesPromise={getTodaysMatches} />
     <Route name="user" path="/user/:id" view={UserResults} userPromise={getUser} />
     <Route name="matchday" path="/matchday/:day" view={MatchDay} matchesPromise={getMatches} />
