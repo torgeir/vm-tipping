@@ -38,8 +38,8 @@ var matches = {
       {'day':'Mon','date': new Date('Jun 23, 2014 17:00:00 GMT-03:00'),id: 715624,'from':'Kroatia','to':'Mexico','place':'Recife', homegoals: 1, awaygoals: 3, outcome: 'b'},
       {'day':'Tue','date': new Date('Jun 24, 2014 13:00:00 GMT-03:00'),id: 715642,'from':'Italia','to':'Uruguay','place':'Natal', homegoals: 0, awaygoals: 1, outcome: 'b'},
       {'day':'Tue','date': new Date('Jun 24, 2014 13:00:00 GMT-03:00'),id: 715641,'from':'Costa Rica','to':'England','place':'Belo Horizonte', homegoals: 0, awaygoals: 0, outcome: 'u'},
-      {'day':'Tue','date': new Date('Jun 24, 2014 17:00:00 GMT-03:00'),id: 715636,'from':'Japan','to':'Colombia','place':'Cuiaba', homegoals: 0, awaygoals: 0, outcome: ''},
-      {'day':'Tue','date': new Date('Jun 24, 2014 17:00:00 GMT-03:00'),id: 715635,'from':'Hellas','to':'Elfenbenskysten','place':'Fortaleza', homegoals: 0, awaygoals: 0, outcome: ''},
+      {'day':'Tue','date': new Date('Jun 24, 2014 17:00:00 GMT-03:00'),id: 715636,'from':'Japan','to':'Colombia','place':'Cuiaba', homegoals: 1, awaygoals: 4, outcome: 'b'},
+      {'day':'Tue','date': new Date('Jun 24, 2014 17:00:00 GMT-03:00'),id: 715635,'from':'Hellas','to':'Elfenbenskysten','place':'Fortaleza', homegoals: 2, awaygoals: 1, outcome: 'h'},
       {'day':'Wed','date': new Date('Jun 25, 2014 13:00:00 GMT-03:00'),id: 715653,'from':'Nigeria','to':'Argentina','place':'Porto Alegre', homegoals: 0, awaygoals: 0, outcome: ''},
       {'day':'Wed','date': new Date('Jun 25, 2014 13:00:00 GMT-03:00'),id: 715654,'from':'Bosnia-Hercegovina','to':'Iran','place':'Salvador', homegoals: 0, awaygoals: 0, outcome: ''},
       {'day':'Wed','date': new Date('Jun 25, 2014 17:00:00 GMT-03:00'),id: 715647,'from':'Honduras','to':'Sveits','place':'Manaus', homegoals: 0, awaygoals: 0, outcome: ''},
@@ -55,9 +55,9 @@ var matches = {
       // B1 vs A2
       {'day':'Thu','date': new Date('Jun 26, 2014 17:00:00 GMT-03:00'),id: 713929,'from':'Nederland','to':'Mexico','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
       // C1 vs D2
-      {'day':'Thu','date': new Date('Jun 26, 2014 17:00:00 GMT-03:00'),id: 713928,'from':'','to':'Uruguay','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
+      {'day':'Thu','date': new Date('Jun 26, 2014 17:00:00 GMT-03:00'),id: 713928,'from':'Colombia','to':'Uruguay','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
       // D1 vs C2
-      {'day':'Thu','date': new Date('Jun 26, 2014 17:00:00 GMT-03:00'),id: 713930,'from':'Costa Rica','to':'','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
+      {'day':'Thu','date': new Date('Jun 26, 2014 17:00:00 GMT-03:00'),id: 713930,'from':'Costa Rica','to':'Hellas','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
       // E1 vs F2
       {'day':'Thu','date': new Date('Jun 26, 2014 17:00:00 GMT-03:00'),id: 713931,'from':'','to':'','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
       // F1 vs F2
