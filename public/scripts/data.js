@@ -46,8 +46,8 @@ var matches = {
       {'day':'Wed','date': new Date('Jun 25, 2014 17:00:00 GMT-03:00'),id: 715648,'from':'Ecuador','to':'Frankrike','place':'Rio De Janeiro', homegoals: 0, awaygoals: 0, outcome: 'u'},
       {'day':'Thu','date': new Date('Jun 26, 2014 13:00:00 GMT-03:00'),id: 715660,'from':'USA','to':'Tyskland','place':'Recife', homegoals: 0, awaygoals: 1, outcome: 'b'},
       {'day':'Thu','date': new Date('Jun 26, 2014 13:00:00 GMT-03:00'),id: 715659,'from':'Portugal','to':'Ghana','place':'Brasilia', homegoals: 2, awaygoals: 1, outcome: 'h'},
-      {'day':'Thu','date': new Date('Jun 26, 2014 17:00:00 GMT-03:00'),id: 715665,'from':'Sør-Korea','to':'Belgia','place':'Sao Paulo', homegoals: 0, awaygoals: 0, outcome: ''},
-      {'day':'Thu','date': new Date('Jun 26, 2014 17:00:00 GMT-03:00'),id: 715666,'from':'Algerie','to':'Russland','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''}
+      {'day':'Thu','date': new Date('Jun 26, 2014 17:00:00 GMT-03:00'),id: 715665,'from':'Sør-Korea','to':'Belgia','place':'Sao Paulo', homegoals: 0, awaygoals: 1, outcome: 'b'},
+      {'day':'Thu','date': new Date('Jun 26, 2014 17:00:00 GMT-03:00'),id: 715666,'from':'Algerie','to':'Russland','place':'Curitiba', homegoals: 1, awaygoals: 1, outcome: 'u'}
   ],
   eight: [
       // A1 vs B2
@@ -63,9 +63,9 @@ var matches = {
       // F1 vs F2
       {'day':'Thu','date': new Date('Jun 26, 2014 17:00:00 GMT-03:00'),id: 713933,'from':'Argentina','to':'Sveits','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
       // G1 vs H2
-      {'day':'Thu','date': new Date('Jun 26, 2014 17:00:00 GMT-03:00'),id: 713932,'from':'Tyskland','to':'','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
+      {'day':'Thu','date': new Date('Jun 26, 2014 17:00:00 GMT-03:00'),id: 713932,'from':'Tyskland','to':'Algerie','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
       // H1 vs G2
-      {'day':'Thu','date': new Date('Jun 26, 2014 17:00:00 GMT-03:00'),id: 713934,'from':'','to':'USA','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''}
+      {'day':'Thu','date': new Date('Jun 26, 2014 17:00:00 GMT-03:00'),id: 713934,'from':'Belgia','to':'USA','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''}
   ],
   translations : {
     "Algerie": { shortname: "ALG", englishname: "Algerie" },

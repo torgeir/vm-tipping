@@ -78,6 +78,8 @@ exports.getUsers = () => {
             var guessMatch1 = results.eight[resultMatch1.id];
             var guessMatch2 = results.eight[resultMatch2.id];
             updateMatchWithFinalResults(guessMatch1, guessMatch2, resultMatch1, resultMatch2);
+            user.points += guessMatch1.points;
+            user.points += guessMatch2.points;
           })
           .value();
 
