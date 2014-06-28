@@ -69,7 +69,7 @@ var matches = {
   ],
   kvart: [
     // 8-1 vs 8-2
-    {'day':'Thu','date': new Date('Jul 04, 2014 13:00:00 GMT-03:00'),id: 715433,'from':'Brasil','to':'Ukjent','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
+    {'day':'Thu','date': new Date('Jul 04, 2014 13:00:00 GMT-03:00'),id: 715433,'from':'Brasil','to':'Colombia','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
     // 8-3 vs 8-4
     {'day':'Thu','date': new Date('Jul 04, 2014 13:00:00 GMT-03:00'),id: 715432,'from':'Ukjent','to':'Ukjent','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
     // 8-5 vs 8-6
