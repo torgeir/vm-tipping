@@ -49,6 +49,7 @@ exports.getUsers = () => {
     _(users)
       .map(user => {
         user.points = 0;
+        user.paid = matches.betaling[user.name];
         var results = user.results;
 
         // Group
