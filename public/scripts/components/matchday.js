@@ -13,7 +13,7 @@ module.exports = React.createClass({
     var prev = day - 1;
     var next = day + 1;
 
-    if (day >= 20) {
+    if (day >= 24) {
       next = day;
     }
 

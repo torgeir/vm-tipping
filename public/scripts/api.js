@@ -77,7 +77,21 @@ exports.getUsers = () => {
             var resultMatch2 = g[1];
             var guessMatch1 = results.eight[resultMatch1.id];
             var guessMatch2 = results.eight[resultMatch2.id];
-            updateMatchWithFinalResults(guessMatch1, guessMatch2, resultMatch1, resultMatch2);
+            updateMatchWithFinalResults(guessMatch1, guessMatch2, resultMatch1, resultMatch2, 15, 5);
+            user.points += guessMatch1.points;
+            user.points += guessMatch2.points;
+          })
+          .value();
+
+        // Kvart - finals. Same method can be used for quarter and semi final.
+        _(matches.kvart)
+          .groupBy( (obj, i) => Math.floor(i/2))
+          .each(g => {
+            var resultMatch1 = g[0];
+            var resultMatch2 = g[1];
+            var guessMatch1 = results.kvart[resultMatch1.id];
+            var guessMatch2 = results.kvart[resultMatch2.id];
+            updateMatchWithFinalResults(guessMatch1, guessMatch2, resultMatch1, resultMatch2, 20, 10);
             user.points += guessMatch1.points;
             user.points += guessMatch2.points;
           })
@@ -125,23 +139,23 @@ var updateMatchWithResults = (match, resultMatch) => {
   }
 }
 
-var updateMatchWithFinalResults = (match1, match2, resultMatch1, resultMatch2) => {
+var updateMatchWithFinalResults = (match1, match2, resultMatch1, resultMatch2, pointsCorrectPosition, pointsCorrectTeam) => {
   var calculatePoints = (match, result1, result2) => {
     match.points = 0; // NB resets points.
     if (match.homename == result1.from) {
       match.homeclass = 'correct-team-correct-position';
-      match.points += 15;
+      match.points += pointsCorrectPosition;
     } else if (match.homename == result2.to) {
       match.homeclass = 'correct-team-wrong-position';
-      match.points += 5;
+      match.points += pointsCorrectTeam;
     }
 
     if (match.awayname == result1.to) {
       match.awayclass = 'correct-team-correct-position';
-      match.points += 15;
+      match.points += pointsCorrectPosition;
     } else if (match.awayname == result2.from) {
       match.awayclass = 'correct-team-wrong-position';
-      match.points += 5;
+      match.points += pointsCorrectTeam;
     }
   }
 
@@ -228,13 +242,15 @@ exports.getMatches = query => {
             .value()
 
           var eightResults = createResultsForMatches(user.results.eight, user);
-          return _.union(groupResults, eightResults);
+          var kvartResults = createResultsForMatches(user.kvart, user);
+          return _.union(groupResults, eightResults, kvartResults);
         })
         .flatten()
         .value();
 
     return _(matches.group)
       .union(matches.eight)
+      .union(matches.kvart)
       .filter(m => {
         var isSameMonthAndYear = m.date.getFullYear() === date.getFullYear() && m.date.getMonth() === date.getMonth();
         var isMidnightGame = m.date.getHours() == '00';
