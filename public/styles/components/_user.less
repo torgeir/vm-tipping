@@ -1,0 +1,60 @@
+.user {
+
+}
+
+@rotate-const: 5;
+@padding-const: 0.01;
+@top-const: 0.04;
+
+.letter(@num) {
+  display: inline-block;
+  .rotate(@rotate-const * @num);
+
+  padding-left: @padding-const * @num * 1em;
+
+  position: relative;
+  bottom: pow(-@top-const * @num, 3) * 1em;
+}
+
+.user--paid-no {
+  .user-letter-1  { .letter(1); }
+  .user-letter-2  { .letter(2); }
+  .user-letter-3  { .letter(3); }
+  .user-letter-4  { .letter(4); }
+  .user-letter-5  { .letter(5); }
+  .user-letter-6  { .letter(6); }
+  .user-letter-7  { .letter(7); }
+  .user-letter-8  { .letter(8); }
+  .user-letter-9  { .letter(9); }
+  .user-letter-10  { .letter(10); }
+  .user-letter-11  { .letter(11); }
+  .user-letter-12  { .letter(12); }
+  .user-letter-13  { .letter(13); }
+  .user-letter-14  { .letter(14); }
+  .user-letter-15  { .letter(15); }
+  .user-letter-16  { .letter(16); }
+  .user-letter-17  { .letter(17); }
+  .user-letter-18  { .letter(18); }
+  .user-letter-19  { .letter(19); }
+  .user-letter-20  { .letter(20); }
+  .user-letter-21  { .letter(21); }
+  .user-letter-22  { .letter(22); }
+  .user-letter-23  { .letter(23); }
+  .user-letter-24  { .letter(24); }
+  .user-letter-25  { .letter(25); }
+  .user-letter-26  { .letter(26); }
+  .user-letter-27  { .letter(27); }
+  .user-letter-28  { .letter(28); }
+  .user-letter-29  { .letter(29); }
+  .user-letter-30  { .letter(30); }
+  .user-letter-31  { .letter(31); }
+  .user-letter-32  { .letter(32); }
+  .user-letter-33  { .letter(33); }
+  .user-letter-34  { .letter(34); }
+  .user-letter-35  { .letter(35); }
+  .user-letter-36  { .letter(36); }
+  .user-letter-37  { .letter(37); }
+  .user-letter-38  { .letter(38); }
+  .user-letter-39  { .letter(39); }
+  .user-letter-40  { .letter(40); }
+}
