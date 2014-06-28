@@ -111,6 +111,25 @@ var matches = {
     "USA": { shortname: "USA", englishname: "USA" },
     "Uruguay": { shortname: "URU", englishname: "Uruguay" },
     "Ukjent": { shortname: "UNK", englishname: "Unknown" }
+  },
+  betaling: {
+    'Dag Stuan': false,
+    'Jonas Follesø': true,
+    'Linda Andreassen Follesø': true,
+    'Erik Alexander Løkken': true,
+    'Sveinung Andreassen Follesø': true,
+    'Nils-Helge Garli Hegvik': false,
+    'Torgeir Thoresen': true,
+    'Eivind Sorteberg': true,
+    'Anna Karine Lunna': false,
+    'Lars Iver Strand': false,
+    'May Helen Johansen': true,
+    'Aud Jane Stokkeland Stender': false,
+    'Morten Stokkeland Stender': false,
+    'Erik Hildrum': true,
+    'Hilde Follesø': true,
+    'Ermin Bektesevic': false,
+    'Geir Olav Olsen': false
   }
 };
 
