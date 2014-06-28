@@ -51,7 +51,7 @@ var matches = {
   ],
   eight: [
       // A1 vs B2
-      {'day':'Thu','date': new Date('Jun 28, 2014 13:00:00 GMT-03:00'),id: 713927,'from':'Brasil','to':'Chile','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
+      {'day':'Thu','date': new Date('Jun 28, 2014 13:00:00 GMT-03:00'),id: 713927,'from':'Brasil','to':'Chile','place':'Curitiba', homegoals: 1, awaygoals: 1, outcome: 'u'},
       // B1 vs A2
       {'day':'Thu','date': new Date('Jun 29, 2014 17:00:00 GMT-03:00'),id: 713929,'from':'Nederland','to':'Mexico','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
       // C1 vs D2
