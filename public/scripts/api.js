@@ -187,14 +187,27 @@ exports.getMatches = query => {
     }
 
     return {
-      id: user.id,
+      userId: user.id,
       name: user.name,
+      id: match.id,
       homename: match.homename,
       awayname: match.awayname,
       homegoals: match.homegoals,
       awaygoals: match.awaygoals,
       outcome: outcome
     }
+  }
+
+  var createResultsForMatches = function(matches, user) {
+    return _(matches)
+      .chain()
+      .keys()
+      .map(matchId => {
+        var match = matches[matchId]
+        match.id = matchId;
+        return createBets(user, match);
+      })
+      .value();
   }
 
   return usersPromise.then(users => {
@@ -205,26 +218,23 @@ exports.getMatches = query => {
         .map(user => {
 
           var groupPlay = user.results.group;
-          return _(groupPlay)
+          var groupResults = _(groupPlay)
             .chain()
             .keys()
             .map(groupId => {
-
               var group = groupPlay[groupId];
-              return _(group)
-                .chain()
-                .keys()
-                .map(matchId => group[matchId])
-                .map(match => createBets(user, match))
-                .value()
+              return createResultsForMatches(group, user);
             })
             .value()
+
+          var eightResults = createResultsForMatches(user.results.eight, user);
+          return _.union(groupResults, eightResults);
         })
         .flatten()
         .value();
 
     return _(matches.group)
-      .chain()
+      .union(matches.eight)
       .filter(m => {
         var isSameMonthAndYear = m.date.getFullYear() === date.getFullYear() && m.date.getMonth() === date.getMonth();
         var isMidnightGame = m.date.getHours() == '00';
@@ -236,11 +246,13 @@ exports.getMatches = query => {
         m.homename = m.from;
         m.awayname = m.to;
         m.bets = _(results)
-                    .filter(r => r.homename == m.from && r.awayname == m.to)
+                    .filter(r => r.id == m.id)
                     .map(b => {
                       b.matchPlayed = (m.outcome !== '');
                       b.correctOutcome = (b.outcome === m.outcome);
                       b.correctResult = (b.homegoals === m.homegoals && b.awaygoals == m.awaygoals);
+                      b.correctHomeTeam = (b.homename === m.homename);
+                      b.correctAwayTeam = (b.awayname === m.awayname);
                       return b;
                     })
                     .value();
