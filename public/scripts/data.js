@@ -53,19 +53,29 @@ var matches = {
       // A1 vs B2
       {'day':'Thu','date': new Date('Jun 28, 2014 13:00:00 GMT-03:00'),id: 713927,'from':'Brasil','to':'Chile','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
       // B1 vs A2
-      {'day':'Thu','date': new Date('Jun 29, 2014 17:00:00 GMT-03:00'),id: 713929,'from':'Nederland','to':'Mexico','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
+      {'day':'Thu','date': new Date('Jun 29, 2014 13:00:00 GMT-03:00'),id: 713929,'from':'Nederland','to':'Mexico','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
       // C1 vs D2
-      {'day':'Thu','date': new Date('Jun 28, 2014 13:00:00 GMT-03:00'),id: 713928,'from':'Colombia','to':'Uruguay','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
+      {'day':'Thu','date': new Date('Jun 28, 2014 17:00:00 GMT-03:00'),id: 713928,'from':'Colombia','to':'Uruguay','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
       // D1 vs C2
       {'day':'Thu','date': new Date('Jun 29, 2014 17:00:00 GMT-03:00'),id: 713930,'from':'Costa Rica','to':'Hellas','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
       // E1 vs F2
       {'day':'Thu','date': new Date('Jun 30, 2014 13:00:00 GMT-03:00'),id: 713931,'from':'Frankrike','to':'Nigeria','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
       // F1 vs F2
-      {'day':'Thu','date': new Date('Jun 01, 2014 17:00:00 GMT-03:00'),id: 713933,'from':'Argentina','to':'Sveits','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
+      {'day':'Thu','date': new Date('Jul 01, 2014 13:00:00 GMT-03:00'),id: 713933,'from':'Argentina','to':'Sveits','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
       // G1 vs H2
-      {'day':'Thu','date': new Date('Jul 30, 2014 13:00:00 GMT-03:00'),id: 713932,'from':'Tyskland','to':'Algerie','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
+      {'day':'Thu','date': new Date('Jun 30, 2014 17:00:00 GMT-03:00'),id: 713932,'from':'Tyskland','to':'Algerie','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
       // H1 vs G2
       {'day':'Thu','date': new Date('Jul 01, 2014 17:00:00 GMT-03:00'),id: 713934,'from':'Belgia','to':'USA','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''}
+  ],
+  kvart: [
+    // 8-1 vs 8-2
+    {'day':'Thu','date': new Date('Jul 04, 2014 13:00:00 GMT-03:00'),id: 715433,'from':'Brasil','to':'Ukjent','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
+    // 8-3 vs 8-4
+    {'day':'Thu','date': new Date('Jul 04, 2014 13:00:00 GMT-03:00'),id: 715432,'from':'Ukjent','to':'Ukjent','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
+    // 8-5 vs 8-6
+    {'day':'Thu','date': new Date('Jul 05, 2014 13:00:00 GMT-03:00'),id: 715434,'from':'Ukjent','to':'Ukjent','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
+    // 8-7 vs 8-8
+    {'day':'Thu','date': new Date('Jul 05, 2014 13:00:00 GMT-03:00'),id: 715435,'from':'Ukjent','to':'Ukjent','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''}
   ],
   translations : {
     "Algerie": { shortname: "ALG", englishname: "Algerie" },
@@ -99,7 +109,8 @@ var matches = {
     "Sør-Korea": { shortname: "KOR", englishname: "Korea Republic" },
     "Tyskland": { shortname: "GER",  englishname: "Germany" },
     "USA": { shortname: "USA", englishname: "USA" },
-    "Uruguay": { shortname: "URU", englishname: "Uruguay" }
+    "Uruguay": { shortname: "URU", englishname: "Uruguay" },
+    "Ukjent": { shortname: "UNK", englishname: "Unknown" }
   }
 };
 
