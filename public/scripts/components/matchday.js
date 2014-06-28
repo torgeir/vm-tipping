@@ -13,7 +13,7 @@ module.exports = React.createClass({
     var prev = day - 1;
     var next = day + 1;
 
-    if (day >= 14) {
+    if (day >= 20) {
       next = day;
     }
 
@@ -25,11 +25,12 @@ module.exports = React.createClass({
       return (<div>Loading..</div>);
     }
 
-    var matches =
-      _(this.props.matches)
-        .chain()
-        .map(m => <GuessList match={m}/>)
-        .value();
+    var matches;
+    if (this.props.matches.length == 0) {
+      matches = (<p>Ingen kamper i dag...</p>);
+    } else {
+      matches = _(this.props.matches).map(m => <GuessList match={m} day={day} />).value();;
+    }
 
     return (
       <section>
