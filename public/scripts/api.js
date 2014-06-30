@@ -64,8 +64,9 @@ exports.getUsers = () => {
               .each(matchId => {
                 var match = group[matchId];
                 var resultMatch = _(matches.group).find(m => m.id == matchId);
-                updateMatchWithResults(match, resultMatch);
-                user.points += match.points;
+                var points = updateMatchWithResults(match, resultMatch);
+                match.points = points;
+                user.points += points;
               });
           })
           .value();
@@ -81,6 +82,15 @@ exports.getUsers = () => {
             updateMatchWithFinalResults(guessMatch1, guessMatch2, resultMatch1, resultMatch2, 15, 5);
             user.points += guessMatch1.points;
             user.points += guessMatch2.points;
+
+            var points1 = updateMatchWithResults(guessMatch1, resultMatch1);
+            var points2 = updateMatchWithResults(guessMatch2, resultMatch2);
+
+            guessMatch1.points += points1;
+            user.points += points1;
+
+            guessMatch2.points += points2;
+            user.points += points2;
           })
           .value();
 
@@ -125,19 +135,20 @@ var updateMatchWithResults = (match, resultMatch) => {
     guessedOutcome = 'b';
   }
 
+  var correctTeams = match.homename === resultMatch.from && match.awayname == resultMatch.to;
   match.outcome = resultMatch.outcome;
   match.matchPlayed = resultMatch.outcome !== '';
-  match.correctResult = match.matchPlayed && resultMatch.homegoals === match.homegoals && resultMatch.awaygoals === match.awaygoals;
-  match.correctOutcome =  match.matchPlayed && resultMatch.outcome === guessedOutcome;
+  match.correctResult = correctTeams && match.matchPlayed && resultMatch.homegoals === match.homegoals && resultMatch.awaygoals === match.awaygoals;
+  match.correctOutcome =  correctTeams && match.matchPlayed && resultMatch.outcome === guessedOutcome;
   match.actualHomegoals = resultMatch.homegoals;
   match.actualAwaygoals = resultMatch.awaygoals;
 
-  match.points = 0;
   if (match.correctResult) {
-    match.points = 20;
+    return 20;
   } else if (match.correctOutcome) {
-    match.points = 10;
+    return 10;
   }
+  return 0;
 }
 
 var updateMatchWithFinalResults = (match1, match2, resultMatch1, resultMatch2, pointsCorrectPosition, pointsCorrectTeam) => {
@@ -265,11 +276,12 @@ exports.getMatches = query => {
         m.bets = _(results)
                     .filter(r => r.id == m.id)
                     .map(b => {
-                      b.matchPlayed = (m.outcome !== '');
-                      b.correctOutcome = (b.outcome === m.outcome);
-                      b.correctResult = (b.homegoals === m.homegoals && b.awaygoals == m.awaygoals);
                       b.correctHomeTeam = (b.homename === m.homename);
                       b.correctAwayTeam = (b.awayname === m.awayname);
+                      b.correctTeams = b.correctHomeTeam && b.correctAwayTeam;
+                      b.matchPlayed = (m.outcome !== '');
+                      b.correctOutcome = b.correctTeams && (b.outcome === m.outcome);
+                      b.correctResult = b.correctTeams && (b.homegoals === m.homegoals && b.awaygoals == m.awaygoals);
                       return b;
                     })
                     .value();
