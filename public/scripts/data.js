@@ -63,7 +63,7 @@ var matches = {
       // F1 vs E2
       {'day':'Thu','date': new Date('Jul 01, 2014 13:00:00 GMT-03:00'),id: 713933,'from':'Argentina','to':'Sveits','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
       // G1 vs H2
-      {'day':'Thu','date': new Date('Jun 30, 2014 17:00:00 GMT-03:00'),id: 713932,'from':'Tyskland','to':'Algerie','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
+      {'day':'Thu','date': new Date('Jun 30, 2014 17:00:00 GMT-03:00'),id: 713932,'from':'Tyskland','to':'Algerie','place':'Curitiba', homegoals: 2, awaygoals: 0, outcome: 'h'},
       // H1 vs G2
       {'day':'Thu','date': new Date('Jul 01, 2014 17:00:00 GMT-03:00'),id: 713934,'from':'Belgia','to':'USA','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''}
   ],
