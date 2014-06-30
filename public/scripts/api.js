@@ -385,8 +385,12 @@ var fetchLiveResult = (match, currentMatches) => {
 
 (function updateMatches() {
   var currentMatches = ajax.get("http://worldcup.sfg.io/matches/current");
-  // TODO include other finals
-  _(matches.group)
+  _([
+    matches.group,
+    matches.eight,
+    matches.kvart
+  ])
+    .flatten()
     .filter(isOngoing)
     .each(match => {
       fetchLiveResult(match, currentMatches)
