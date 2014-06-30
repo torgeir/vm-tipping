@@ -1,8 +1,6 @@
 var React = require('react');
 var _     = require('lodash');
 
-var Match = require('./match');
-var Guess = require('./guess');
 var api   = require('../api');
 
 var URL = "http://img.fifa.com/images/flags/4/%s.png";
