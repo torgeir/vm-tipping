@@ -63,13 +63,13 @@ var matches = {
       // F1 vs E2
       {'day':'Thu','date': new Date('Jul 01, 2014 13:00:00 GMT-03:00'),id: 713933,'from':'Argentina','to':'Sveits','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
       // G1 vs H2
-      {'day':'Thu','date': new Date('Jun 30, 2014 17:00:00 GMT-03:00'),id: 713932,'from':'Tyskland','to':'Algerie','place':'Curitiba', homegoals: 2, awaygoals: 0, outcome: 'h'},
+      {'day':'Thu','date': new Date('Jun 30, 2014 17:00:00 GMT-03:00'),id: 713932,'from':'Tyskland','to':'Algerie','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: 'u'},
       // H1 vs G2
       {'day':'Thu','date': new Date('Jul 01, 2014 17:00:00 GMT-03:00'),id: 713934,'from':'Belgia','to':'USA','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''}
   ],
   kvart: [
     {'day':'Thu','date': new Date('Jul 04, 2014 13:00:00 GMT-03:00'),id: 715433,'from':'Brasil','to':'Colombia','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
-    {'day':'Thu','date': new Date('Jul 04, 2014 13:00:00 GMT-03:00'),id: 715432,'from':'Ukjent','to':'Ukjent','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
+    {'day':'Thu','date': new Date('Jul 04, 2014 13:00:00 GMT-03:00'),id: 715432,'from':'Frankrike','to':'Tyskland','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
     {'day':'Thu','date': new Date('Jul 05, 2014 13:00:00 GMT-03:00'),id: 715434,'from':'Ukjent','to':'Ukjent','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
     {'day':'Thu','date': new Date('Jul 05, 2014 13:00:00 GMT-03:00'),id: 715435,'from':'Nederland','to':'Costa Rica','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''}
   ],
@@ -117,7 +117,7 @@ var matches = {
     'Nils-Helge Garli Hegvik': false,
     'Torgeir Thoresen': true,
     'Eivind Sorteberg': true,
-    'Anna Karine Lunna': false,
+    'Anna Karine Lunna': true,
     'Lars Iver Strand': false,
     'May Helen Johansen': true,
     'Aud Jane Stokkeland Stender': false,
@@ -125,7 +125,7 @@ var matches = {
     'Erik Hildrum': true,
     'Hilde Follesø': true,
     'Ermin Bektesevic': false,
-    'Geir Olav Olsen': false
+    'Geir Olav Olsen': true
   }
 };
 
