@@ -69,7 +69,7 @@ var matches = {
   ],
   kvart: [
     {'day':'Thu','date': new Date('Jul 04, 2014 13:00:00 GMT-03:00'),id: 715433,'from':'Brasil','to':'Colombia','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
-    {'day':'Thu','date': new Date('Jul 04, 2014 13:00:00 GMT-03:00'),id: 715432,'from':'Ukjent','to':'Ukjent','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
+    {'day':'Thu','date': new Date('Jul 04, 2014 13:00:00 GMT-03:00'),id: 715432,'from':'Frankrike','to':'Tyskland','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
     {'day':'Thu','date': new Date('Jul 05, 2014 13:00:00 GMT-03:00'),id: 715434,'from':'Ukjent','to':'Ukjent','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
     {'day':'Thu','date': new Date('Jul 05, 2014 13:00:00 GMT-03:00'),id: 715435,'from':'Nederland','to':'Costa Rica','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''}
   ],
@@ -117,7 +117,7 @@ var matches = {
     'Nils-Helge Garli Hegvik': false,
     'Torgeir Thoresen': true,
     'Eivind Sorteberg': true,
-    'Anna Karine Lunna': false,
+    'Anna Karine Lunna': true,
     'Lars Iver Strand': false,
     'May Helen Johansen': true,
     'Aud Jane Stokkeland Stender': false,
@@ -125,7 +125,7 @@ var matches = {
     'Erik Hildrum': true,
     'Hilde Follesø': true,
     'Ermin Bektesevic': false,
-    'Geir Olav Olsen': false
+    'Geir Olav Olsen': true
   }
 };
 
