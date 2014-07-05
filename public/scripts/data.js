@@ -70,7 +70,7 @@ var matches = {
   kvart: [
     {'day':'Thu','date': new Date('Jul 04, 2014 13:00:00 GMT-03:00'),id: 715433,'from':'Brasil','to':'Colombia','place':'Curitiba', homegoals: 2, awaygoals: 1, outcome: 'h'},
     {'day':'Thu','date': new Date('Jul 04, 2014 13:00:00 GMT-03:00'),id: 715432,'from':'Frankrike','to':'Tyskland','place':'Curitiba', homegoals: 0, awaygoals: 1, outcome: 'b'},
-    {'day':'Thu','date': new Date('Jul 05, 2014 13:00:00 GMT-03:00'),id: 715434,'from':'Argentina','to':'Belgia','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''},
+    {'day':'Thu','date': new Date('Jul 05, 2014 13:00:00 GMT-03:00'),id: 715434,'from':'Argentina','to':'Belgia','place':'Curitiba', homegoals: 1, awaygoals: 0, outcome: 'h'},
     {'day':'Thu','date': new Date('Jul 05, 2014 13:00:00 GMT-03:00'),id: 715435,'from':'Nederland','to':'Costa Rica','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''}
   ],
   translations : {
