@@ -68,8 +68,7 @@ exports.getUsers = () => {
                 match.points = points;
                 user.points += points;
               });
-          })
-          .value();
+          });
 
         // Eight - finals. Same method can be used for quarter and semi final.
         _(matches.eight)
@@ -91,8 +90,7 @@ exports.getUsers = () => {
 
             guessMatch2.points += points2;
             user.points += points2;
-          })
-          .value();
+          });
 
         // Kvart - finals. Same method can be used for quarter and semi final.
         _(matches.kvart)
@@ -105,8 +103,40 @@ exports.getUsers = () => {
             updateMatchWithFinalResults(guessMatch1, guessMatch2, resultMatch1, resultMatch2, 20, 10);
             user.points += guessMatch1.points;
             user.points += guessMatch2.points;
-          })
-          .value();
+          });
+
+        // Kvart - finals. Same method can be used for quarter and semi final.
+        _(matches.semi)
+          .groupBy( (obj, i) => Math.floor(i/2))
+          .each(g => {
+            var resultMatch1 = g[0];
+            var resultMatch2 = g[1];
+            var guessMatch1 = results.semi[resultMatch1.id];
+            var guessMatch2 = results.semi[resultMatch2.id];
+            updateMatchWithFinalResults(guessMatch1, guessMatch2, resultMatch1, resultMatch2, 30, 15);
+            user.points += guessMatch1.points;
+            user.points += guessMatch2.points;
+          });
+
+        _(matches.bronsefinale)
+          .groupBy( (obj, i) => Math.floor(i/2))
+          .each(g => {
+            var resultMatch = g[0];
+            var guessMatch = results.bronsefinale[resultMatch.id];
+            updateMatchWithFinalResults(guessMatch, null, resultMatch, resultMatch, 35, 15);
+            updateMatchWithFinalWinnerPoints(resultMatch, guessMatch, 20);
+            user.points += guessMatch.points;
+          });
+
+        _(matches.finale)
+          .groupBy( (obj, i) => Math.floor(i/2))
+          .each(g => {
+            var resultMatch = g[0];
+            var guessMatch = results.finale[resultMatch.id];
+            updateMatchWithFinalResults(guessMatch, null, resultMatch, resultMatch, 40, 20);
+            updateMatchWithFinalWinnerPoints(resultMatch, guessMatch, 20);
+            user.points += guessMatch.points;
+          });
 
         return user;
       })
@@ -171,8 +201,20 @@ var updateMatchWithFinalResults = (match1, match2, resultMatch1, resultMatch2, p
     }
   }
 
-  calculatePoints(match1, resultMatch1, resultMatch2);
-  calculatePoints(match2, resultMatch2, resultMatch1);
+  if (match1) calculatePoints(match1, resultMatch1, resultMatch2);
+  if (match2) calculatePoints(match2, resultMatch2, resultMatch1);
+}
+
+function updateMatchWithFinalWinnerPoints(resultMatch, guessMatch, extraPoints) {
+  if (resultMatch.outcome == "") {
+    return 0;
+  }
+  var winnerName = resultMatch[(resultMatch.homegoals > resultMatch.awaygoals) ? 'from' : 'to'];
+  var guessWinnerName = guessMatch[(guessMatch.homegoals > guessMatch.awaygoals) ? 'homename' : 'awayname'];
+
+  guessMatch.points += (winnerName == guessWinnerName)
+    ? extraPoints
+    : 0;
 }
 
 // set time to 00:00 to ease calculating current match day
@@ -253,9 +295,12 @@ exports.getMatches = query => {
             })
             .value()
 
-          var eightResults = createResultsForMatches(user.results.eight, user);
-          var kvartResults = createResultsForMatches(user.kvart, user);
-          return _.union(groupResults, eightResults, kvartResults);
+          return _.union(
+            createResultsForMatches(user.results.eight, user),
+            createResultsForMatches(user.kvart, user),
+            createResultsForMatches(user.semi, user),
+            createResultsForMatches(user.bronsefinale, user),
+            createResultsForMatches(user.finale, user));
         })
         .flatten()
         .value();
@@ -263,6 +308,9 @@ exports.getMatches = query => {
     return _(matches.group)
       .union(matches.eight)
       .union(matches.kvart)
+      .union(matches.semi)
+      .union(matches.bronsefinale)
+      .union(matches.finale)
       .filter(m => {
         var isSameMonthAndYear = m.date.getFullYear() === date.getFullYear() && m.date.getMonth() === date.getMonth();
         var isMidnightGame = m.date.getHours() == '00';
@@ -388,7 +436,10 @@ var fetchLiveResult = (match, currentMatches) => {
   _([
     matches.group,
     matches.eight,
-    matches.kvart
+    matches.kvart,
+    matches.semi,
+    matches.bronsefinale,
+    matches.finale
   ])
     .flatten()
     .filter(isOngoing)

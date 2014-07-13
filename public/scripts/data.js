@@ -73,6 +73,16 @@ var matches = {
     {'day':'Thu','date': new Date('Jul 05, 2014 13:00:00 GMT-03:00'),id: 715434,'from':'Argentina','to':'Belgia','place':'Curitiba', homegoals: 1, awaygoals: 0, outcome: 'h'},
     {'day':'Thu','date': new Date('Jul 05, 2014 13:00:00 GMT-03:00'),id: 715435,'from':'Nederland','to':'Costa Rica','place':'Curitiba', homegoals: 0, awaygoals: 0, outcome: ''}
   ],
+  semi: [
+    {'day':'Tue','date': new Date('Jul 08, 2014 17:00:00 GMT-03:00'),id: 715436,'from':'Brasil','to':'Tyskland','place':'Estadio Mineirao', homegoals: 1, awaygoals: 7, outcome: 'a'},
+    {'day':'Wed','date': new Date('Jul 09, 2014 17:00:00 GMT-03:00'),id: 715437,'from':'Nederland','to':'Argentina','place':'Sao Paolo', homegoals: 0, awaygoals: 0, outcome: 'u'}
+  ],
+  bronsefinale: [
+    {'day':'Sat','date': new Date('Jul 12, 2014 17:00:00 GMT-03:00'),id: 715438,'from':'Brasil','to':'Nederland','place':'Estadio Nacional', homegoals: 0, awaygoals: 3, outcome: 'a'},
+  ],
+  finale: [
+    {'day':'Sun','date': new Date('Jul 13, 2014 16:00:00 GMT-03:00'),id: 715439,'from':'Tyskland','to':'Argentina','place':'Estadio do Maracana', homegoals: 0, awaygoals: 0, outcome: ''},
+  ],
   translations : {
     "Algerie": { shortname: "ALG", englishname: "Algerie" },
     "Argentina": { shortname: "ARG", englishname: "Argentina" },
